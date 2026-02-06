@@ -4,9 +4,333 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>我的研究主页</title>
+  <meta name="description" content="个人研究主页：研究方向、论文、项目与联系信息。" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@300;400;600;700&display=swap");
+
+    :root {
+      --bg: #0d1117;
+      --bg-2: #111827;
+      --text: #e6edf3;
+      --muted: #a6b1c2;
+      --accent: #f4d06f;
+      --accent-2: #6ee7b7;
+      --card: rgba(17, 24, 39, 0.6);
+      --stroke: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 10% -10%, #223253 0%, transparent 60%),
+                  radial-gradient(900px 600px at 90% 10%, #163242 0%, transparent 55%),
+                  linear-gradient(160deg, var(--bg), var(--bg-2));
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 96px;
+      position: relative;
+    }
+
+    .glow {
+      position: absolute;
+      inset: -80px auto auto -60px;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(244, 208, 111, 0.25), transparent 65%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 6px 12px;
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.3px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(36px, 6vw, 64px);
+      margin: 16px 0 12px;
+      line-height: 1.05;
+    }
+
+    .lead {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      color: #0c111b;
+      background: var(--accent);
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: 0 10px 20px rgba(244, 208, 111, 0.25);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--stroke);
+      box-shadow: none;
+    }
+
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      padding: 22px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 16px;
+    }
+
+    .profile-card h2 {
+      font-size: 18px;
+      margin: 0;
+      color: var(--accent-2);
+      letter-spacing: 0.4px;
+    }
+
+    .profile-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    main {
+      margin-top: 54px;
+      display: grid;
+      gap: 28px;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--stroke);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .section h3 {
+      margin: 0 0 16px;
+      font-size: 20px;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(17, 24, 39, 0.5);
+      border: 1px solid var(--stroke);
+    }
+
+    .card h4 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.2px;
+    }
+
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    a.link {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    footer {
+      margin-top: 60px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fade 0.8s ease forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 0.1s; }
+    .fade-in.delay-2 { animation-delay: 0.2s; }
+    .fade-in.delay-3 { animation-delay: 0.3s; }
+
+    @keyframes fade {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      header { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <h1>你的名字</h1>
-  <p>这里写一句你的研究简介。</p>
+  <div class="page">
+    <div class="glow"></div>
+    <header>
+      <div>
+        <div class="badge">研究主页 · Research Portfolio</div>
+        <h1 class="fade-in">你的名字</h1>
+        <p class="lead fade-in delay-1">
+          我关注 <strong>城市计算 / 信息检索 / 人工智能伦理</strong> 的交叉研究，目标是让技术更可解释、可验证、可被人信任。
+        </p>
+        <div class="cta fade-in delay-2">
+          <a class="btn" href="#publications">查看论文</a>
+          <a class="btn secondary" href="#contact">联系我</a>
+        </div>
+      </div>
+      <div class="profile-card fade-in delay-3">
+        <h2>当前身份</h2>
+        <p>某某大学 · 计算机学院 · 博士研究生</p>
+        <p>研究导师：张教授</p>
+        <p>所在地：上海 / 远程合作</p>
+        <p>兴趣：可解释 AI、可信数据系统、人机协作</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section fade-in" id="about">
+        <h3>研究概览</h3>
+        <p class="lead">
+          我研究如何在复杂系统中建立“可检验的智能”：把模型、数据与评估流程融合，让结论具备证据链。
+          我关注实验可复现、方法可迁移、以及现实场景的可持续落地。
+        </p>
+      </section>
+
+      <section class="section fade-in delay-1" id="interests">
+        <h3>研究方向</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>可信数据与证据链</h4>
+            <div class="meta">数据质量、溯源、可解释性</div>
+          </div>
+          <div class="card">
+            <h4>城市与群体智能</h4>
+            <div class="meta">交通、能耗、公共服务优化</div>
+          </div>
+          <div class="card">
+            <h4>多模态检索</h4>
+            <div class="meta">文本 + 图像 + 时空信号</div>
+          </div>
+          <div class="card">
+            <h4>负责任 AI</h4>
+            <div class="meta">公平性、透明性与风险评估</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in delay-2" id="publications">
+        <h3>代表论文</h3>
+        <ul class="clean">
+          <li class="card">
+            <h4>Paper Title A</h4>
+            <div class="meta">某某会议 · 2025</div>
+            <div class="meta">作者：你的名字，合作者</div>
+            <a class="link" href="#">论文链接</a>
+          </li>
+          <li class="card">
+            <h4>Paper Title B</h4>
+            <div class="meta">某某期刊 · 2024</div>
+            <div class="meta">作者：你的名字，合作者</div>
+            <a class="link" href="#">论文链接</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section fade-in delay-2" id="projects">
+        <h3>研究项目</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Project Alpha</h4>
+            <div class="meta">开源工具，用于城市数据质量评估</div>
+            <a class="link" href="#">GitHub</a>
+          </div>
+          <div class="card">
+            <h4>Project Beta</h4>
+            <div class="meta">多模态检索基准与评测框架</div>
+            <a class="link" href="#">项目主页</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in delay-3" id="talks">
+        <h3>报告与教学</h3>
+        <ul class="clean">
+          <li class="card">
+            <h4>“可验证的智能系统”</h4>
+            <div class="meta">2025 · 某某大学学术报告</div>
+          </li>
+          <li class="card">
+            <h4>数据治理与 AI 责任</h4>
+            <div class="meta">研究生课程助教 · 2024</div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section fade-in delay-3" id="contact">
+        <h3>联系我</h3>
+        <p class="lead">欢迎交流合作或邀请报告。</p>
+        <ul class="clean">
+          <li class="card">
+            <div class="meta">邮箱：yourname@university.edu</div>
+          </li>
+          <li class="card">
+            <div class="meta">学术主页：ORCID / Google Scholar</div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>© 2026 你的名字 · 研究主页</footer>
+  </div>
 </body>
 </html>
