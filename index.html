@@ -354,6 +354,47 @@
       margin-top: 4px;
     }
 
+    /* ── News ── */
+    .news-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 16px;
+      align-items: baseline;
+    }
+
+    .news-date {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .news-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .news-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: #fef9c3;
+      color: #854d0e;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
     /* ── Projects ── */
     .card {
       border: 1px solid var(--border);
@@ -503,6 +544,7 @@
       <div class="topbar-content">
         <div class="brand">Chao (Frank) Xie</div>
         <nav class="nav">
+          <a href="#news">News</a>
           <a href="#about">About</a>
           <a href="#education">Education</a>
           <a href="#interests">Research</a>
@@ -538,6 +580,21 @@
     </header>
 
     <main>
+      <section id="news">
+        <p class="section-label">News</p>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">Feb 2026</span>
+            <span class="news-text">
+              <span class="news-tag">Paper Accepted</span>
+              <em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em>
+              accepted in <strong>Automation in Construction</strong> (in press).
+              <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a>
+            </span>
+          </li>
+        </ul>
+      </section>
+
       <section id="about">
         <p class="section-label">Advanced Robotics &amp; Embodied AI</p>
         <p class="about-text">
@@ -605,7 +662,12 @@
             <div>
               <p class="pub-title">Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</p>
               <p class="pub-authors">Chao Xie, Aladdin Alwisy</p>
-              <p class="pub-link"><a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">Demo Video →</a></p>
+              <p class="pub-venue">Automation in Construction, 2026 (Accepted, in press)</p>
+              <p class="pub-link">
+                <a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">Demo Video →</a>
+                &nbsp;·&nbsp;
+                <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a>
+              </p>
             </div>
           </li>
           <li class="pub-item">
