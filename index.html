@@ -90,7 +90,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0;
-      align-items: center;
     }
 
     .nav a {
@@ -583,6 +582,7 @@
 
       .hero-meta {
         min-width: unset;
+        width: 100%;
       }
 
       section {
@@ -600,19 +600,52 @@
         gap: 6px;
       }
 
+      /* Topbar: brand left · nav scrolls · lang-btn pinned right */
+      .topbar {
+        padding: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
       .topbar-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
+        gap: 6px;
+        flex-wrap: nowrap;
+        height: 48px;
+      }
+
+      .brand {
+        flex-shrink: 0;
       }
 
       .nav {
-        gap: 0;
+        flex: 1;
+        min-width: 0;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      }
+
+      .nav::-webkit-scrollbar {
+        display: none;
       }
 
       .nav a {
-        padding: 4px 8px;
+        padding: 0 10px;
         font-size: 12px;
+        white-space: nowrap;
+        height: 48px;
+        line-height: 48px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .lang-btn {
+        flex-shrink: 0;
+        height: 28px;
+        padding: 0 10px;
       }
     }
 
@@ -625,12 +658,26 @@
         padding: 36px 0 32px;
       }
 
+      .hero-avatar {
+        width: 96px;
+        height: 96px;
+      }
+
       .actions {
         flex-direction: column;
+        width: 100%;
       }
 
       .btn {
         justify-content: center;
+      }
+    }
+
+    /* Very small phones: stack news date above text */
+    @media (max-width: 380px) {
+      .news-item {
+        grid-template-columns: 1fr;
+        gap: 3px;
       }
     }
 
@@ -672,8 +719,8 @@
           <a href="#publications" data-i18n="nav-publications">Publications</a>
           <a href="#projects" data-i18n="nav-projects">Projects</a>
           <a href="#contact" data-i18n="nav-contact">Contact</a>
-          <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">中文</button>
         </nav>
+        <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">中文</button>
       </div>
     </div>
 
