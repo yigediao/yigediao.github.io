@@ -167,6 +167,22 @@
       margin-bottom: 8px;
     }
 
+    .hero-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+    }
+
+    .hero-avatar {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+    }
+
     .actions {
       margin-top: 24px;
       display: flex;
@@ -533,6 +549,16 @@
         gap: 28px;
       }
 
+      .hero-left {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-bio {
+        text-align: left;
+      }
+
       .hero-meta {
         min-width: unset;
       }
@@ -608,17 +634,20 @@
     </div>
 
     <header class="hero">
-      <div>
-        <h1 class="hero-name">Chao <span class="hero-nickname">(Frank)</span> Xie</h1>
-        <p class="hero-role">Ph.D. Candidate · University of Florida</p>
-        <p class="hero-bio">
-          I research automation in construction with AI and robotics, intelligent design methods,
-          computer vision for 3D perception, and autonomous robotic systems for smarter, 
-          more efficient, safer, and scalable building processes.
-        </p>
-        <div class="actions">
-          <a class="btn primary" href="#publications">Publications</a>
-          <a class="btn" href="#contact">Contact</a>
+      <div class="hero-left">
+        <img class="hero-avatar" src="avatar.jpg" alt="Chao Xie">
+        <div>
+          <h1 class="hero-name">Chao <span class="hero-nickname">(Frank)</span> Xie</h1>
+          <p class="hero-role">Ph.D. Candidate · University of Florida</p>
+          <p class="hero-bio">
+            I research automation in construction with AI and robotics, intelligent design methods,
+            computer vision for 3D perception, and autonomous robotic systems for smarter,
+            more efficient, safer, and scalable building processes.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#publications">Publications</a>
+            <a class="btn" href="#contact">Contact</a>
+          </div>
         </div>
       </div>
 
