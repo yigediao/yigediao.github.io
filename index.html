@@ -90,6 +90,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0;
+      align-items: center;
     }
 
     .nav a {
@@ -104,6 +105,40 @@
       color: var(--text);
       background: var(--bg-alt);
       text-decoration: none;
+    }
+
+    /* ── Language toggle ── */
+    .lang-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 10px;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: color 0.15s, background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .lang-btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    /* ── Scroll progress ── */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s linear;
     }
 
     /* ── Hero ── */
@@ -527,19 +562,6 @@
       border-top: 1px solid var(--border);
       font-size: 13px;
       color: var(--text-muted);
-      text-align: center;
-    }
-
-    /* ── Scroll progress ── */
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 2px;
-      background: var(--accent);
-      width: 0%;
-      z-index: 999;
-      transition: width 0.1s linear;
     }
 
     /* ── Responsive ── */
@@ -621,14 +643,15 @@
       <div class="topbar-content">
         <div class="brand">Chao (Frank) Xie</div>
         <nav class="nav">
-          <a href="#news">News</a>
-          <a href="#about">About</a>
-          <a href="#education">Education</a>
-          <a href="#awards">Awards</a>
-          <a href="#interests">Research</a>
-          <a href="#publications">Publications</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+          <a href="#news" data-i18n="nav-news">News</a>
+          <a href="#about" data-i18n="nav-about">About</a>
+          <a href="#education" data-i18n="nav-education">Education</a>
+          <a href="#awards" data-i18n="nav-awards">Awards</a>
+          <a href="#interests" data-i18n="nav-interests">Research</a>
+          <a href="#publications" data-i18n="nav-publications">Publications</a>
+          <a href="#projects" data-i18n="nav-projects">Projects</a>
+          <a href="#contact" data-i18n="nav-contact">Contact</a>
+          <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">中文</button>
         </nav>
       </div>
     </div>
@@ -638,20 +661,20 @@
         <img class="hero-avatar" src="avatar.jpg" alt="Chao Xie">
         <div>
           <h1 class="hero-name">Chao <span class="hero-nickname">(Frank)</span> Xie</h1>
-          <p class="hero-role">Ph.D. Student · University of Florida</p>
-          <p class="hero-bio">
+          <p class="hero-role" data-i18n="hero-role">Ph.D. Student · University of Florida</p>
+          <p class="hero-bio" data-i18n="hero-bio">
             I research automation in construction with AI and robotics, intelligent design methods,
             computer vision for 3D perception, and autonomous robotic systems for smarter,
             more efficient, safer, and scalable building processes.
           </p>
           <div class="actions">
-            <a class="btn primary" href="#publications">Publications</a>
-            <a class="btn" href="#contact">Contact</a>
+            <a class="btn primary" href="#publications" data-i18n="btn-publications">Publications</a>
+            <a class="btn" href="#contact" data-i18n="btn-contact">Contact</a>
           </div>
         </div>
       </div>
 
-      <aside class="hero-meta">
+      <aside class="hero-meta" data-i18n="hero-meta">
         <strong>Info</strong>
         University of Florida<br>
         Design, Construction &amp; Planning<br>
@@ -662,11 +685,11 @@
 
     <main>
       <section id="news">
-        <p class="section-label">News</p>
+        <p class="section-label" data-i18n="label-news">News</p>
         <ul class="news-list">
           <li class="news-item">
             <span class="news-date">Feb 2026</span>
-            <span class="news-text">
+            <span class="news-text" data-i18n="news-1">
               <span class="news-tag">Paper Accepted</span>
               <em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em>
               accepted in <strong>Automation in Construction</strong> (in press).
@@ -675,7 +698,7 @@
           </li>
           <li class="news-item">
             <span class="news-date">Feb 2026</span>
-            <span class="news-text">
+            <span class="news-text" data-i18n="news-2">
               <span class="news-tag">Dataset Released</span>
               Released <strong>WFC Dataset</strong> — a high-resolution, high-fidelity benchmark dataset capturing real-world wood-frame construction scenes, with peer benchmark results.
               <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">GitHub →</a>
@@ -685,18 +708,18 @@
       </section>
 
       <section id="about">
-        <p class="section-label">Advanced Robotics &amp; Embodied AI</p>
-        <p class="about-text">
+        <p class="section-label" data-i18n="label-about">Advanced Robotics &amp; Embodied AI</p>
+        <p class="about-text" data-i18n="about-text">
           My research focuses on studying vision-driven closed-loop robotic systems for real-world manipulation and assembly, with a specific focus on construction-scale tasks. It integrates Vision-Language-Action (VLA) models and Reinforcement Learning to tackle environmental variability. By synthesizing 3D perception and mechanical arm visual servoing, the developed systems ensure high-precision execution under uncertainty. My work emphasizes the seamless Sim-to-Real transfer of intelligent policies from high-fidelity digital twins to large-scale industrial workstations.
         </p>
       </section>
 
       <section id="projects">
-        <p class="section-label">Featured Project</p>
+        <p class="section-label" data-i18n="label-projects">Featured Project</p>
         <div class="card">
-          <p class="card-title">Vision-Driven Adaptive Control for Wood-Framed Construction</p>
-          <p class="meta">Project demo for the paper on advancing robotic automation in wood-framed construction.</p>
-          <p class="meta" style="margin-top: 6px;"><a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a></p>
+          <p class="card-title" data-i18n="project-title">Vision-Driven Adaptive Control for Wood-Framed Construction</p>
+          <p class="meta" data-i18n="project-meta">Project demo for the paper on advancing robotic automation in wood-framed construction.</p>
+          <p class="meta" style="margin-top: 6px;"><a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer" data-i18n="project-link">Watch on YouTube →</a></p>
           <div class="video-wrapper">
             <iframe
               src="https://www.youtube.com/embed/Lu1Ta6I1sc4"
@@ -711,81 +734,81 @@
       </section>
 
       <section id="education">
-        <p class="section-label">Education</p>
+        <p class="section-label" data-i18n="label-education">Education</p>
         <ul class="timeline">
           <li>
-            <p class="item-title">University of Florida · Gainesville, FL <span class="item-year">Expected Dec 2026</span></p>
-            <p class="item-degree">Ph.D. in Design, Construction and Planning · GPA: 3.97</p>
-            <p class="meta">Full Scholarship &amp; Graduate Assistantship</p>
-            <p class="meta">Research: AI and robotics in construction, intelligent design methods, 3D perception, autonomous robotic systems.</p>
+            <p class="item-title" data-i18n="edu-1-title">University of Florida · Gainesville, FL <span class="item-year">Expected Dec 2026</span></p>
+            <p class="item-degree" data-i18n="edu-1-degree">Ph.D. in Design, Construction and Planning · GPA: 3.97</p>
+            <p class="meta" data-i18n="edu-funding">Full Scholarship &amp; Graduate Assistantship</p>
+            <p class="meta" data-i18n="edu-1-research">Research: AI and robotics in construction, intelligent design methods, 3D perception, autonomous robotic systems.</p>
           </li>
           <li>
-            <p class="item-title">University of Florida · Gainesville, FL <span class="item-year">Dec 2023</span></p>
-            <p class="item-degree">M.S. in Construction Management · GPA: 4.00</p>
-            <p class="meta">Full Scholarship &amp; Graduate Assistantship</p>
+            <p class="item-title" data-i18n="edu-2-title">University of Florida · Gainesville, FL <span class="item-year">Dec 2023</span></p>
+            <p class="item-degree" data-i18n="edu-2-degree">M.S. in Construction Management · GPA: 4.00</p>
+            <p class="meta" data-i18n="edu-funding">Full Scholarship &amp; Graduate Assistantship</p>
           </li>
           <li>
-            <p class="item-title">Southwest Jiaotong University · Chengdu, China <span class="item-year">Jun 2013</span></p>
-            <p class="item-degree">B.E. in Environmental Engineering</p>
-            <p class="item-degree">B.E. in Economics (International Economics and Trade)</p>
+            <p class="item-title" data-i18n="edu-3-title">Southwest Jiaotong University · Chengdu, China <span class="item-year">Jun 2013</span></p>
+            <p class="item-degree" data-i18n="edu-3-degree1">B.E. in Environmental Engineering</p>
+            <p class="item-degree" data-i18n="edu-3-degree2">B.E. in Economics (International Economics and Trade)</p>
           </li>
         </ul>
       </section>
 
       <section id="awards">
-        <p class="section-label">Awards &amp; Honors</p>
+        <p class="section-label" data-i18n="label-awards">Awards &amp; Honors</p>
         <ul class="timeline">
           <li>
-            <p class="award-title">Rinker School Building Construction Scholarship <span class="item-year">Fall 2025</span></p>
+            <p class="award-title" data-i18n="award-1">Rinker School Building Construction Scholarship <span class="item-year">Fall 2025</span></p>
           </li>
           <li>
-            <p class="award-title">Impressive First — UF Coding Competition (Hackathon) <span class="item-year">Fall 2025</span></p>
+            <p class="award-title" data-i18n="award-2">Impressive First — UF Coding Competition (Hackathon) <span class="item-year">Fall 2025</span></p>
           </li>
           <li>
-            <p class="award-title">Ingle Family Scholarship <span class="item-year">Spring 2025</span></p>
+            <p class="award-title" data-i18n="award-3">Ingle Family Scholarship <span class="item-year">Spring 2025</span></p>
           </li>
           <li>
-            <p class="award-title">Rinker School Building Construction Scholarship <span class="item-year">Spring 2025</span></p>
+            <p class="award-title" data-i18n="award-4">Rinker School Building Construction Scholarship <span class="item-year">Spring 2025</span></p>
           </li>
           <li>
-            <p class="award-title">Phi Kappa Phi Honor Society <span class="item-year">Spring 2025</span></p>
+            <p class="award-title" data-i18n="award-5">Phi Kappa Phi Honor Society <span class="item-year">Spring 2025</span></p>
           </li>
           <li>
-            <p class="award-title">Jimmie Hinze Graduate Scholarship <span class="item-year">Fall 2024</span></p>
+            <p class="award-title" data-i18n="award-6">Jimmie Hinze Graduate Scholarship <span class="item-year">Fall 2024</span></p>
           </li>
           <li>
-            <p class="award-title">CM Masters / Graduate Academic Excellence Award <span class="item-year">Fall 2023</span></p>
-            <p class="meta">1 recipient · University of Florida</p>
+            <p class="award-title" data-i18n="award-7">CM Masters / Graduate Academic Excellence Award <span class="item-year">Fall 2023</span></p>
+            <p class="meta" data-i18n="award-7-meta">1 recipient · University of Florida</p>
           </li>
           <li>
-            <p class="award-title">Sigma Lambda Chi (ΣΛΧ) International Construction Honor Society <span class="item-year">Fall 2023</span></p>
+            <p class="award-title" data-i18n="award-8">Sigma Lambda Chi (ΣΛΧ) International Construction Honor Society <span class="item-year">Fall 2023</span></p>
           </li>
         </ul>
       </section>
 
       <section id="interests">
-        <p class="section-label">Research Interests</p>
+        <p class="section-label" data-i18n="label-interests">Research Interests</p>
         <ul class="interest-list">
-          <li><strong>Embodied AI &amp; VLA Models:</strong> Developing Vision-Language-Action architectures that bridge high-level semantic reasoning with low-level motor control for generalizable task planning.</li>
-          <li><strong>3D Scene Understanding for Action:</strong> Engineering robust 6DoF object pose estimation and tracking algorithms using RGB-D data and point cloud geometry to enable precise manipulation.</li>
-          <li><strong>Active Perception &amp; Object-level Reasoning:</strong> Leveraging geometric constraints and semantic priors to resolve state estimation under heavy occlusion and environmental uncertainty.</li>
-          <li><strong>Closed-loop Visual Servoing:</strong> Implementing adaptive control laws and real-time feedback loops for precision-critical assembly and construction-scale tasks.</li>
-          <li><strong>Robotic Assembly under Uncertainty:</strong> Addressing complex challenges in symmetry, tight tolerances, and imperfect components through perception-action coupling.</li>
-          <li><strong>Perception-Planning-Execution Co-design:</strong> Architecting integrated systems that ensure reliable deployment on large-scale industrial workstations.</li>
-          <li><strong>Digital Twins &amp; Sim-to-Real Pipelines:</strong> Building high-fidelity simulations to facilitate the scalable development and transfer of intelligent robotic policies.</li>
+          <li data-i18n="interest-1"><strong>Embodied AI &amp; VLA Models:</strong> Developing Vision-Language-Action architectures that bridge high-level semantic reasoning with low-level motor control for generalizable task planning.</li>
+          <li data-i18n="interest-2"><strong>3D Scene Understanding for Action:</strong> Engineering robust 6DoF object pose estimation and tracking algorithms using RGB-D data and point cloud geometry to enable precise manipulation.</li>
+          <li data-i18n="interest-3"><strong>Active Perception &amp; Object-level Reasoning:</strong> Leveraging geometric constraints and semantic priors to resolve state estimation under heavy occlusion and environmental uncertainty.</li>
+          <li data-i18n="interest-4"><strong>Closed-loop Visual Servoing:</strong> Implementing adaptive control laws and real-time feedback loops for precision-critical assembly and construction-scale tasks.</li>
+          <li data-i18n="interest-5"><strong>Robotic Assembly under Uncertainty:</strong> Addressing complex challenges in symmetry, tight tolerances, and imperfect components through perception-action coupling.</li>
+          <li data-i18n="interest-6"><strong>Perception-Planning-Execution Co-design:</strong> Architecting integrated systems that ensure reliable deployment on large-scale industrial workstations.</li>
+          <li data-i18n="interest-7"><strong>Digital Twins &amp; Sim-to-Real Pipelines:</strong> Building high-fidelity simulations to facilitate the scalable development and transfer of intelligent robotic policies.</li>
         </ul>
       </section>
 
       <section id="publications">
-        <p class="section-label">Publications</p>
+        <p class="section-label" data-i18n="label-publications">Publications</p>
         <ul class="pub-list">
           <li class="pub-item">
-            <span class="pub-badge">Journal</span>
+            <span class="pub-badge" data-i18n="badge-journal">Journal</span>
             <div>
               <p class="pub-title">Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</p>
               <p class="pub-authors">Chao Xie, Aladdin Alwisy</p>
-              <p class="pub-venue">Automation in Construction, 2026 (Accepted, in press)</p>
-              <p class="pub-link">
+              <p class="pub-venue" data-i18n="pub-1-venue">Automation in Construction, 2026 (Accepted, in press)</p>
+              <p class="pub-link" data-i18n="pub-1-links">
                 <a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">Demo Video →</a>
                 &nbsp;·&nbsp;
                 <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a>
@@ -793,56 +816,56 @@
             </div>
           </li>
           <li class="pub-item">
-            <span class="pub-badge conference">Conference</span>
+            <span class="pub-badge conference" data-i18n="badge-conference">Conference</span>
             <div>
               <p class="pub-title">Lumber Alignment Detection System for Robotic Nailing Using Computer Vision and Deep Learning</p>
-              <p class="pub-venue">ASCE Construction Research Congress (CRC), 2024</p>
+              <p class="pub-venue" data-i18n="pub-2-venue">ASCE Construction Research Congress (CRC), 2024</p>
             </div>
           </li>
           <li class="pub-item">
-            <span class="pub-badge conference">Conference</span>
+            <span class="pub-badge conference" data-i18n="badge-conference">Conference</span>
             <div>
               <p class="pub-title">Quantitative Analysis of the Role of Robotics in Promoting Industrialized Construction for Resilient Post-Disaster Recovery: Exploratory Research</p>
               <p class="pub-venue">ConIC, 2026</p>
             </div>
           </li>
           <li class="pub-item">
-            <span class="pub-badge conference">Conference</span>
+            <span class="pub-badge conference" data-i18n="badge-conference">Conference</span>
             <div>
               <p class="pub-title">Digital Twin-Enabled Adaptive Control for Perception-Driven Robotic Assembly in Industrialized Construction</p>
               <p class="pub-venue">I3CE, 2026</p>
             </div>
           </li>
           <li class="pub-item">
-            <span class="pub-badge conference">Conference</span>
+            <span class="pub-badge conference" data-i18n="badge-conference">Conference</span>
             <div>
               <p class="pub-title">Bridging the Gap: A Framework for Robotics Education in Industrialized Construction</p>
-              <p class="pub-venue">ASCE Construction Research Congress (CRC), 2026</p>
+              <p class="pub-venue" data-i18n="pub-5-venue">ASCE Construction Research Congress (CRC), 2026</p>
             </div>
           </li>
         </ul>
       </section>
 
       <section id="talks">
-        <p class="section-label">Teaching</p>
+        <p class="section-label" data-i18n="label-teaching">Teaching</p>
         <ul class="course-list">
           <li>
-            <p class="item-title">BCN4612C — Construction Estimating 2</p>
-            <p class="meta">Instructor · Taught every semester</p>
+            <p class="item-title" data-i18n="teach-1-title">BCN4612C — Construction Estimating 2</p>
+            <p class="meta" data-i18n="teach-1-meta">Instructor · Taught every semester</p>
           </li>
           <li>
-            <p class="item-title">BCN5905 — Advanced Construction Technology (Autodesk-Funded Course)</p>
-            <p class="meta">Course Creator and Instructor</p>
+            <p class="item-title" data-i18n="teach-2-title">BCN5905 — Advanced Construction Technology (Autodesk-Funded Course)</p>
+            <p class="meta" data-i18n="teach-2-meta">Course Creator and Instructor</p>
           </li>
         </ul>
       </section>
 
       <section id="contact">
-        <p class="section-label">Contact</p>
-        <p class="meta" style="margin-bottom: 16px;">I welcome collaboration and invited talk opportunities.</p>
+        <p class="section-label" data-i18n="label-contact">Contact</p>
+        <p class="meta" style="margin-bottom: 16px;" data-i18n="contact-intro">I welcome collaboration and invited talk opportunities.</p>
         <div class="contact-grid">
           <div class="contact-row">
-            <span class="contact-label">Email</span>
+            <span class="contact-label" data-i18n="contact-email-label">Email</span>
             <a href="mailto:xie.chao@ufl.edu">xie.chao@ufl.edu</a>
           </div>
           <div class="contact-row">
@@ -850,7 +873,7 @@
             <a href="https://linkedin.com/in/chao-xie-7b35ab255/" target="_blank" rel="noopener noreferrer">linkedin.com/in/chao-xie-7b35ab255/</a>
           </div>
           <div class="contact-row">
-            <span class="contact-label">Location</span>
+            <span class="contact-label" data-i18n="contact-location-label">Location</span>
             <span>Gainesville, FL 32603</span>
           </div>
         </div>
@@ -863,7 +886,7 @@
   </div>
 
   <script>
-    // Scroll progress bar
+    // ── Scroll progress bar ──
     window.addEventListener('scroll', () => {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -871,7 +894,7 @@
       document.getElementById('scrollProgress').style.width = scrolled + '%';
     });
 
-    // Smooth scroll
+    // ── Smooth scroll ──
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -882,7 +905,7 @@
       });
     });
 
-    // Fade-in on scroll
+    // ── Fade-in on scroll ──
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -899,6 +922,167 @@
       el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
       observer.observe(el);
     });
+
+    // ── i18n ──
+    const translations = {
+      en: {
+        'nav-news': 'News',
+        'nav-about': 'About',
+        'nav-education': 'Education',
+        'nav-awards': 'Awards',
+        'nav-interests': 'Research',
+        'nav-publications': 'Publications',
+        'nav-projects': 'Projects',
+        'nav-contact': 'Contact',
+        'hero-role': 'Ph.D. Student · University of Florida',
+        'hero-bio': 'I research automation in construction with AI and robotics, intelligent design methods, computer vision for 3D perception, and autonomous robotic systems for smarter, more efficient, safer, and scalable building processes.',
+        'btn-publications': 'Publications',
+        'btn-contact': 'Contact',
+        'hero-meta': '<strong>Info</strong>\n        University of Florida<br>\n        Design, Construction &amp; Planning<br>\n        Expected Dec 2026<br>\n        Gainesville, FL 32603',
+        'label-news': 'News',
+        'label-about': 'Advanced Robotics &amp; Embodied AI',
+        'label-projects': 'Featured Project',
+        'label-education': 'Education',
+        'label-awards': 'Awards &amp; Honors',
+        'label-interests': 'Research Interests',
+        'label-publications': 'Publications',
+        'label-teaching': 'Teaching',
+        'label-contact': 'Contact',
+        'news-1': '<span class="news-tag">Paper Accepted</span> <em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em> accepted in <strong>Automation in Construction</strong> (in press). <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a>',
+        'news-2': '<span class="news-tag">Dataset Released</span> Released <strong>WFC Dataset</strong> — a high-resolution, high-fidelity benchmark dataset capturing real-world wood-frame construction scenes, with peer benchmark results. <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">GitHub →</a>',
+        'about-text': 'My research focuses on studying vision-driven closed-loop robotic systems for real-world manipulation and assembly, with a specific focus on construction-scale tasks. It integrates Vision-Language-Action (VLA) models and Reinforcement Learning to tackle environmental variability. By synthesizing 3D perception and mechanical arm visual servoing, the developed systems ensure high-precision execution under uncertainty. My work emphasizes the seamless Sim-to-Real transfer of intelligent policies from high-fidelity digital twins to large-scale industrial workstations.',
+        'project-title': 'Vision-Driven Adaptive Control for Wood-Framed Construction',
+        'project-meta': 'Project demo for the paper on advancing robotic automation in wood-framed construction.',
+        'project-link': 'Watch on YouTube →',
+        'edu-1-title': 'University of Florida · Gainesville, FL <span class="item-year">Expected Dec 2026</span>',
+        'edu-1-degree': 'Ph.D. in Design, Construction and Planning · GPA: 3.97',
+        'edu-funding': 'Full Scholarship &amp; Graduate Assistantship',
+        'edu-1-research': 'Research: AI and robotics in construction, intelligent design methods, 3D perception, autonomous robotic systems.',
+        'edu-2-title': 'University of Florida · Gainesville, FL <span class="item-year">Dec 2023</span>',
+        'edu-2-degree': 'M.S. in Construction Management · GPA: 4.00',
+        'edu-3-title': 'Southwest Jiaotong University · Chengdu, China <span class="item-year">Jun 2013</span>',
+        'edu-3-degree1': 'B.E. in Environmental Engineering',
+        'edu-3-degree2': 'B.E. in Economics (International Economics and Trade)',
+        'award-1': 'Rinker School Building Construction Scholarship <span class="item-year">Fall 2025</span>',
+        'award-2': 'Impressive First — UF Coding Competition (Hackathon) <span class="item-year">Fall 2025</span>',
+        'award-3': 'Ingle Family Scholarship <span class="item-year">Spring 2025</span>',
+        'award-4': 'Rinker School Building Construction Scholarship <span class="item-year">Spring 2025</span>',
+        'award-5': 'Phi Kappa Phi Honor Society <span class="item-year">Spring 2025</span>',
+        'award-6': 'Jimmie Hinze Graduate Scholarship <span class="item-year">Fall 2024</span>',
+        'award-7': 'CM Masters / Graduate Academic Excellence Award <span class="item-year">Fall 2023</span>',
+        'award-7-meta': '1 recipient · University of Florida',
+        'award-8': 'Sigma Lambda Chi (ΣΛΧ) International Construction Honor Society <span class="item-year">Fall 2023</span>',
+        'interest-1': '<strong>Embodied AI &amp; VLA Models:</strong> Developing Vision-Language-Action architectures that bridge high-level semantic reasoning with low-level motor control for generalizable task planning.',
+        'interest-2': '<strong>3D Scene Understanding for Action:</strong> Engineering robust 6DoF object pose estimation and tracking algorithms using RGB-D data and point cloud geometry to enable precise manipulation.',
+        'interest-3': '<strong>Active Perception &amp; Object-level Reasoning:</strong> Leveraging geometric constraints and semantic priors to resolve state estimation under heavy occlusion and environmental uncertainty.',
+        'interest-4': '<strong>Closed-loop Visual Servoing:</strong> Implementing adaptive control laws and real-time feedback loops for precision-critical assembly and construction-scale tasks.',
+        'interest-5': '<strong>Robotic Assembly under Uncertainty:</strong> Addressing complex challenges in symmetry, tight tolerances, and imperfect components through perception-action coupling.',
+        'interest-6': '<strong>Perception-Planning-Execution Co-design:</strong> Architecting integrated systems that ensure reliable deployment on large-scale industrial workstations.',
+        'interest-7': '<strong>Digital Twins &amp; Sim-to-Real Pipelines:</strong> Building high-fidelity simulations to facilitate the scalable development and transfer of intelligent robotic policies.',
+        'badge-journal': 'Journal',
+        'badge-conference': 'Conference',
+        'pub-1-venue': 'Automation in Construction, 2026 (Accepted, in press)',
+        'pub-1-links': '<a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">Demo Video →</a> &nbsp;·&nbsp; <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a>',
+        'pub-2-venue': 'ASCE Construction Research Congress (CRC), 2024',
+        'pub-5-venue': 'ASCE Construction Research Congress (CRC), 2026',
+        'teach-1-title': 'BCN4612C — Construction Estimating 2',
+        'teach-1-meta': 'Instructor · Taught every semester',
+        'teach-2-title': 'BCN5905 — Advanced Construction Technology (Autodesk-Funded Course)',
+        'teach-2-meta': 'Course Creator and Instructor',
+        'contact-intro': 'I welcome collaboration and invited talk opportunities.',
+        'contact-email-label': 'Email',
+        'contact-location-label': 'Location',
+      },
+      zh: {
+        'nav-news': '动态',
+        'nav-about': '关于',
+        'nav-education': '教育',
+        'nav-awards': '奖项',
+        'nav-interests': '研究',
+        'nav-publications': '论文',
+        'nav-projects': '项目',
+        'nav-contact': '联系',
+        'hero-role': '博士研究生 · 佛罗里达大学',
+        'hero-bio': '我的研究聚焦于 AI 与机器人在建筑领域的自动化应用、智能设计方法、三维感知计算机视觉，以及用于更智能、高效、安全、可扩展建造流程的自主机器人系统。',
+        'btn-publications': '论文发表',
+        'btn-contact': '联系我',
+        'hero-meta': '<strong>基本信息</strong>\n        佛罗里达大学<br>\n        设计、建造与规划学院<br>\n        预计 2026 年 12 月毕业<br>\n        佛罗里达州盖恩斯维尔',
+        'label-news': '最新动态',
+        'label-about': '高级机器人与具身智能',
+        'label-projects': '代表项目',
+        'label-education': '教育背景',
+        'label-awards': '奖项与荣誉',
+        'label-interests': '研究方向',
+        'label-publications': '论文发表',
+        'label-teaching': '教学经历',
+        'label-contact': '联系方式',
+        'news-1': '<span class="news-tag">论文录用</span> <em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em> 被 <strong>Automation in Construction</strong> 录用（已接收，待出版）。<a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">数据集 →</a>',
+        'news-2': '<span class="news-tag">数据集发布</span> 发布了 <strong>WFC Dataset</strong>——一个高分辨率、高保真的真实世界木框架建筑场景基准数据集，含同行基准测试结果。<a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">GitHub →</a>',
+        'about-text': '我的研究专注于视觉驱动的闭环机器人系统，用于真实世界的操控与装配任务，尤其聚焦于建筑规模的应用场景。研究整合了视觉-语言-行动（VLA）模型与强化学习，以应对环境变异性。通过融合三维感知技术与机械臂视觉伺服，所开发的系统在不确定条件下实现高精度执行。本研究着重强调智能策略从高保真数字孪生到大规模工业工作站的 Sim-to-Real 无缝迁移。',
+        'project-title': '面向木框架建筑的视觉驱动自适应控制',
+        'project-meta': '论文"利用视觉驱动自适应控制推进木框架建筑机器人自动化"的项目演示。',
+        'project-link': '在 YouTube 上观看 →',
+        'edu-1-title': '佛罗里达大学 · 盖恩斯维尔，佛罗里达州 <span class="item-year">预计 2026 年 12 月</span>',
+        'edu-1-degree': '设计、建造与规划学院 博士 · GPA: 3.97',
+        'edu-funding': '全额奖学金及助研职位',
+        'edu-1-research': '研究方向：建筑领域的 AI 与机器人、智能设计方法、三维感知、自主机器人系统。',
+        'edu-2-title': '佛罗里达大学 · 盖恩斯维尔，佛罗里达州 <span class="item-year">2023 年 12 月</span>',
+        'edu-2-degree': '建设管理硕士 · GPA: 4.00',
+        'edu-3-title': '西南交通大学 · 成都，中国 <span class="item-year">2013 年 6 月</span>',
+        'edu-3-degree1': '环境工程学士',
+        'edu-3-degree2': '经济学学士（国际经济与贸易）',
+        'award-1': 'Rinker 学院建筑施工奖学金 <span class="item-year">2025 年秋</span>',
+        'award-2': '一等奖 — 佛罗里达大学编程竞赛（黑客马拉松）<span class="item-year">2025 年秋</span>',
+        'award-3': 'Ingle 家族奖学金 <span class="item-year">2025 年春</span>',
+        'award-4': 'Rinker 学院建筑施工奖学金 <span class="item-year">2025 年春</span>',
+        'award-5': 'Phi Kappa Phi 荣誉学会 <span class="item-year">2025 年春</span>',
+        'award-6': 'Jimmie Hinze 研究生奖学金 <span class="item-year">2024 年秋</span>',
+        'award-7': '建设管理硕士/研究生学业卓越奖 <span class="item-year">2023 年秋</span>',
+        'award-7-meta': '全校唯一获奖者 · 佛罗里达大学',
+        'award-8': 'Sigma Lambda Chi (ΣΛΧ) 国际建筑荣誉学会 <span class="item-year">2023 年秋</span>',
+        'interest-1': '<strong>具身智能与 VLA 模型：</strong>开发视觉-语言-行动（VLA）架构，将高层语义推理与底层运动控制相结合，实现可泛化的任务规划。',
+        'interest-2': '<strong>面向行动的三维场景理解：</strong>利用 RGB-D 数据与点云几何，构建鲁棒的 6DoF 物体位姿估计与跟踪算法，实现精确操控。',
+        'interest-3': '<strong>主动感知与物体级推理：</strong>利用几何约束与语义先验，解决重度遮挡与环境不确定性下的状态估计问题。',
+        'interest-4': '<strong>闭环视觉伺服：</strong>实现自适应控制律与实时反馈回路，用于精度要求高的装配与建筑规模任务。',
+        'interest-5': '<strong>不确定性下的机器人装配：</strong>通过感知-行动耦合，应对对称性、严格公差和不完整构件等复杂挑战。',
+        'interest-6': '<strong>感知-规划-执行协同设计：</strong>架构一体化系统，确保在大规模工业工作站上的可靠部署。',
+        'interest-7': '<strong>数字孪生与 Sim-to-Real 迁移：</strong>构建高保真仿真环境，促进智能机器人策略的可扩展开发与迁移。',
+        'badge-journal': '期刊',
+        'badge-conference': '会议',
+        'pub-1-venue': '《Automation in Construction》，2026（已录用，待出版）',
+        'pub-1-links': '<a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">演示视频 →</a> &nbsp;·&nbsp; <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">数据集 →</a>',
+        'pub-2-venue': 'ASCE 建筑研究大会（CRC），2024',
+        'pub-5-venue': 'ASCE 建筑研究大会（CRC），2026',
+        'teach-1-title': 'BCN4612C — 建筑估价 2',
+        'teach-1-meta': '授课教师 · 每学期开课',
+        'teach-2-title': 'BCN5905 — 高级建筑技术（Autodesk 资助课程）',
+        'teach-2-meta': '课程创始人及授课教师',
+        'contact-intro': '欢迎学术合作与受邀演讲的机会。',
+        'contact-email-label': '邮箱',
+        'contact-location-label': '地址',
+      }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const t = translations[lang][key];
+        if (t !== undefined) el.innerHTML = t;
+      });
+      localStorage.setItem('lang', lang);
+      document.getElementById('lang-toggle').textContent = lang === 'zh' ? 'EN' : '中文';
+    }
+
+    function toggleLang() {
+      setLang(currentLang === 'zh' ? 'en' : 'zh');
+    }
+
+    // Init
+    setLang(currentLang);
   </script>
 </body>
 </html>
