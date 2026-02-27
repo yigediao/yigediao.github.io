@@ -213,8 +213,12 @@
     }
 
     section {
-      padding: 40px 0;
+      display: grid;
+      grid-template-columns: 148px 1fr;
+      gap: 0 40px;
+      padding: 44px 0;
       border-bottom: 1px solid var(--border);
+      align-items: start;
     }
 
     section:last-child {
@@ -224,10 +228,10 @@
     .section-label {
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      padding-top: 3px;   /* aligns baseline with first content line */
     }
 
     h2 {
@@ -241,19 +245,19 @@
     /* ── About ── */
     .about-text {
       font-size: 15px;
-      color: var(--text);
-      line-height: 1.8;
+      color: #222;
+      line-height: 1.85;
     }
 
     /* ── Education ── */
     .timeline {
       list-style: none;
       display: grid;
-      gap: 20px;
+      gap: 22px;
     }
 
     .timeline li {
-      padding-left: 16px;
+      padding-left: 14px;
       border-left: 2px solid var(--border);
     }
 
@@ -262,31 +266,66 @@
     }
 
     .item-title {
-      font-size: 15px;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 16px;
       font-weight: 600;
-      color: var(--text);
+      color: #111;
+      margin-bottom: 3px;
+      line-height: 1.4;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .item-year {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .item-degree {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
       margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .award-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      line-height: 1.5;
     }
 
     .meta {
       font-size: 13px;
       color: var(--text-muted);
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     /* ── Interests ── */
     .interest-list {
       list-style: none;
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
 
     .interest-list li {
       font-size: 14px;
-      color: var(--text);
-      padding-left: 18px;
+      color: #333;
+      padding-left: 20px;
       position: relative;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .interest-list li::before {
@@ -295,13 +334,14 @@
       left: 0;
       color: var(--accent);
       font-size: 13px;
+      top: 1px;
     }
 
     /* ── Publications ── */
     .pub-list {
       list-style: none;
       display: grid;
-      gap: 20px;
+      gap: 24px;
     }
 
     .pub-item {
@@ -322,7 +362,7 @@
       background: var(--accent-light);
       color: var(--accent);
       white-space: nowrap;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .pub-badge.conference {
@@ -331,16 +371,17 @@
     }
 
     .pub-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      line-height: 1.6;
-      margin-bottom: 4px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+      line-height: 1.55;
+      margin-bottom: 5px;
     }
 
     .pub-authors {
       font-size: 13px;
       color: var(--text-muted);
+      margin-bottom: 2px;
     }
 
     .pub-venue {
@@ -351,7 +392,7 @@
 
     .pub-link {
       font-size: 13px;
-      margin-top: 4px;
+      margin-top: 5px;
     }
 
     /* ── News ── */
@@ -496,6 +537,16 @@
         min-width: unset;
       }
 
+      section {
+        grid-template-columns: 1fr;
+        gap: 12px 0;
+        padding: 32px 0;
+      }
+
+      .section-label {
+        padding-top: 0;
+      }
+
       .pub-item {
         grid-template-columns: 1fr;
         gap: 6px;
@@ -547,6 +598,7 @@
           <a href="#news">News</a>
           <a href="#about">About</a>
           <a href="#education">Education</a>
+          <a href="#awards">Awards</a>
           <a href="#interests">Research</a>
           <a href="#publications">Publications</a>
           <a href="#projects">Projects</a>
@@ -592,6 +644,14 @@
               <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a>
             </span>
           </li>
+          <li class="news-item">
+            <span class="news-date">Feb 2026</span>
+            <span class="news-text">
+              <span class="news-tag">Dataset Released</span>
+              Released <strong>WFC Dataset</strong> — a high-resolution, high-fidelity benchmark dataset capturing real-world wood-frame construction scenes, with peer benchmark results.
+              <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">GitHub →</a>
+            </span>
+          </li>
         </ul>
       </section>
 
@@ -625,18 +685,55 @@
         <p class="section-label">Education</p>
         <ul class="timeline">
           <li>
-            <p class="item-title">University of Florida</p>
-            <p class="meta">Ph.D. in Design, Construction and Planning · Expected Dec 2026 · Gainesville, FL</p>
-            <p class="meta">Research: automation in construction with AI and robotics; intelligent design methods; computer vision for 3D perception; autonomous robotic systems. GPA: 3.97</p>
+            <p class="item-title">University of Florida · Gainesville, FL <span class="item-year">Expected Dec 2026</span></p>
+            <p class="item-degree">Ph.D. in Design, Construction and Planning · GPA: 3.97</p>
+            <p class="meta">Full Scholarship &amp; Graduate Assistantship</p>
+            <p class="meta">Research: AI and robotics in construction, intelligent design methods, 3D perception, autonomous robotic systems.</p>
           </li>
           <li>
-            <p class="item-title">University of Florida</p>
-            <p class="meta">M.S. in Construction Management · Dec 2023 · Gainesville, FL · GPA: 4.00</p>
+            <p class="item-title">University of Florida · Gainesville, FL <span class="item-year">Dec 2023</span></p>
+            <p class="item-degree">M.S. in Construction Management · GPA: 4.00</p>
+            <p class="meta">Full Scholarship &amp; Graduate Assistantship</p>
           </li>
           <li>
-            <p class="item-title">Southwest Jiaotong University</p>
-            <p class="meta">B.E. in Environmental Engineering · Jun 2013 · China</p>
-            <p class="meta">B.E. in Economics (International Economics and Trade) · Jun 2013 · China</p>
+            <p class="item-title">Southwest Jiaotong University · Chengdu, China <span class="item-year">Jun 2013</span></p>
+            <p class="item-degree">B.E. in Environmental Engineering</p>
+            <p class="item-degree">B.E. in Economics (International Economics and Trade)</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="awards">
+        <p class="section-label">Awards &amp; Honors</p>
+        <ul class="timeline">
+          <li>
+            <p class="award-title">Rinker School Building Construction Scholarship <span class="item-year">Fall 2025</span></p>
+            <p class="meta">$1,500</p>
+          </li>
+          <li>
+            <p class="award-title">Impressive First — UF Coding Competition (Hackathon) <span class="item-year">Fall 2025</span></p>
+          </li>
+          <li>
+            <p class="award-title">Ingle Family Scholarship <span class="item-year">Spring 2025</span></p>
+            <p class="meta">$3,000</p>
+          </li>
+          <li>
+            <p class="award-title">Rinker School Building Construction Scholarship <span class="item-year">Spring 2025</span></p>
+            <p class="meta">$1,000</p>
+          </li>
+          <li>
+            <p class="award-title">Phi Kappa Phi Honor Society <span class="item-year">Spring 2025</span></p>
+          </li>
+          <li>
+            <p class="award-title">Jimmie Hinze Graduate Scholarship <span class="item-year">Fall 2024</span></p>
+            <p class="meta">$1,000</p>
+          </li>
+          <li>
+            <p class="award-title">CM Masters / Graduate Academic Excellence Award <span class="item-year">Fall 2023</span></p>
+            <p class="meta">1 recipient · University of Florida</p>
+          </li>
+          <li>
+            <p class="award-title">Sigma Lambda Chi (ΣΛΧ) International Construction Honor Society <span class="item-year">Fall 2023</span></p>
           </li>
         </ul>
       </section>
