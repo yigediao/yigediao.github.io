@@ -7,7 +7,7 @@
   <meta name="description" content="Chao (Frank) Xie research homepage: AI and robotics in construction, intelligent design, and 3D computer vision." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="256bdc8b-0c66-4500-a4e0-84388dd1922e"></script>
   <style>
     :root {
@@ -633,6 +633,27 @@
         justify-content: center;
       }
     }
+
+    /* ── Chinese font mode ── */
+    html.lang-zh body {
+      font-family: 'Noto Sans SC', 'Inter', sans-serif;
+      line-height: 1.8;
+    }
+
+    html.lang-zh .hero-name {
+      font-family: 'Noto Sans SC', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    html.lang-zh .item-title {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+    }
+
+    html.lang-zh .section-label {
+      letter-spacing: 0.06em;
+    }
   </style>
 </head>
 <body>
@@ -688,7 +709,7 @@
         <p class="section-label" data-i18n="label-news">News</p>
         <ul class="news-list">
           <li class="news-item">
-            <span class="news-date">Feb 2026</span>
+            <span class="news-date" data-i18n="news-date-1">Feb 2026</span>
             <span class="news-text" data-i18n="news-1">
               <span class="news-tag">Paper Accepted</span>
               <em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em>
@@ -697,7 +718,7 @@
             </span>
           </li>
           <li class="news-item">
-            <span class="news-date">Feb 2026</span>
+            <span class="news-date" data-i18n="news-date-2">Feb 2026</span>
             <span class="news-text" data-i18n="news-2">
               <span class="news-tag">Dataset Released</span>
               Released <strong>WFC Dataset</strong> — a high-resolution, high-fidelity benchmark dataset capturing real-world wood-frame construction scenes, with peer benchmark results.
@@ -993,6 +1014,8 @@
         'contact-intro': 'I welcome collaboration and invited talk opportunities.',
         'contact-email-label': 'Email',
         'contact-location-label': 'Location',
+        'news-date-1': 'Feb 2026',
+        'news-date-2': 'Feb 2026',
       },
       zh: {
         'hero-name': '谢超',
@@ -1062,6 +1085,8 @@
         'contact-intro': '欢迎学术合作与受邀演讲的机会。',
         'contact-email-label': '邮箱',
         'contact-location-label': '地址',
+        'news-date-1': '2026 年 2 月',
+        'news-date-2': '2026 年 2 月',
       }
     };
 
@@ -1070,6 +1095,7 @@
     function setLang(lang) {
       currentLang = lang;
       document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.documentElement.classList.toggle('lang-zh', lang === 'zh');
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         const t = translations[lang][key];
