@@ -4,63 +4,84 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chao (Frank) Xie | Research Homepage</title>
-  <meta name="description" content="Chao (Frank) Xie research homepage: AI and robotics in construction, intelligent design, and 3D computer vision." />
+  <meta name="description" content="Ph.D. Student at University of Florida. Research in AI, robotics, and automation for construction — embodied AI, 3D perception, and autonomous robotic systems." />
+
+  <!-- Open Graph (LinkedIn, WeChat, Slack, etc.) -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://yigediao.github.io/" />
+  <meta property="og:title" content="Chao (Frank) Xie | Research Homepage" />
+  <meta property="og:description" content="Ph.D. Student at University of Florida. Research in AI, robotics, and automation for construction — embodied AI, 3D perception, and autonomous robotic systems." />
+  <meta property="og:image" content="https://yigediao.github.io/avatar.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+  <meta property="profile:first_name" content="Chao" />
+  <meta property="profile:last_name" content="Xie" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chao (Frank) Xie | Research Homepage" />
+  <meta name="twitter:description" content="Ph.D. Student at University of Florida. Research in AI, robotics, and automation for construction." />
+  <meta name="twitter:image" content="https://yigediao.github.io/avatar.jpg" />
+
+  <!-- Schema.org structured data (Google rich results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chao Xie",
+    "alternateName": "Frank Xie",
+    "url": "https://yigediao.github.io",
+    "image": "https://yigediao.github.io/avatar.jpg",
+    "jobTitle": "Ph.D. Student",
+    "affiliation": {
+      "@type": "EducationalOrganization",
+      "name": "University of Florida",
+      "url": "https://www.ufl.edu"
+    },
+    "email": "xie.chao@ufl.edu",
+    "sameAs": [
+      "https://linkedin.com/in/chao-xie-7b35ab255/",
+      "https://github.com/yigediao"
+    ],
+    "knowsAbout": [
+      "Robotics", "Embodied AI", "Computer Vision",
+      "Construction Automation", "3D Perception",
+      "Vision-Language-Action Models", "Reinforcement Learning"
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="256bdc8b-0c66-4500-a4e0-84388dd1922e"></script>
   <style>
     :root {
-      --bg: #eef0f3;
-      --panel: #f7f8fa;
-      --text: #1d1d1f;
-      --muted: #62646b;
-      --line: #c9ccd3;
-      --accent: #0071e3;
-      --shadow: 0 10px 28px rgba(15, 20, 30, 0.08);
-      --radius: 20px;
+      --bg: #ffffff;
+      --bg-alt: #f8f8f6;
+      --border: #e5e5e2;
+      --text: #1a1a1a;
+      --text-muted: #6b6b6b;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --max-w: 900px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(1200px 600px at 10% -20%, #f9fafc 0%, transparent 60%),
-        radial-gradient(1000px 520px at 100% 0%, #e5eaf1 0%, transparent 55%),
-        var(--bg);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: auto;
-      width: 42vw;
-      height: 42vw;
-      max-width: 520px;
-      max-height: 520px;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(24px);
-      opacity: 0.35;
-      animation: floatGlow 14s ease-in-out infinite alternate;
-    }
-
-    body::before {
-      top: -140px;
-      left: -120px;
-      background: radial-gradient(circle, rgba(0, 113, 227, 0.24) 0%, rgba(0, 113, 227, 0) 68%);
-    }
-
-    body::after {
-      right: -140px;
-      bottom: -140px;
-      background: radial-gradient(circle, rgba(88, 86, 214, 0.18) 0%, rgba(88, 86, 214, 0) 70%);
-      animation-delay: 1.2s;
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 15px;
     }
 
     a {
@@ -68,279 +89,476 @@
       text-decoration: none;
     }
 
-    a:hover { text-decoration: underline; }
+    a:hover {
+      text-decoration: underline;
+    }
 
+    /* ── Layout ── */
     .page {
-      max-width: 1060px;
+      max-width: var(--max-w);
       margin: 0 auto;
-      padding: 22px 18px 64px;
+      padding: 0 24px 80px;
     }
 
-    .page > .topbar,
-    .page > .hero,
-    .page > main,
-    .page > footer {
-      width: 100%;
-    }
-
+    /* ── Nav ── */
     .topbar {
       position: sticky;
-      top: 10px;
-      z-index: 20;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      margin: 0 -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .topbar-content {
+      max-width: var(--max-w);
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 14px;
-      background: rgba(243, 245, 248, 0.82);
-      backdrop-filter: saturate(180%) blur(18px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      overflow: hidden;
-    }
-
-    .scroll-progress {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 2px;
-      background: rgba(0, 0, 0, 0.04);
-    }
-
-    .scroll-progress span {
-      display: block;
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, #0071e3, #5e5ce6);
-      transition: width 0.12s linear;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     .brand {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 600;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      text-transform: uppercase;
-      white-space: nowrap;
+      color: var(--text);
+      letter-spacing: -0.01em;
     }
 
     .nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      justify-content: flex-end;
+      gap: 0;
     }
 
     .nav a {
       font-size: 13px;
-      color: #3a3a3c;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      color: var(--text-muted);
+      padding: 4px 12px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
     }
 
     .nav a:hover {
-      background: #f2f2f5;
-      border-color: #e5e5ea;
+      color: var(--text);
+      background: var(--bg-alt);
       text-decoration: none;
     }
 
-    .hero {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .panel {
-      background: var(--panel);
-      border: 1px solid #d8dbe2;
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-      transition: transform 0.28s ease, box-shadow 0.28s ease;
-      min-width: 0;
-    }
-
-    .panel:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
-    }
-
-    .kicker {
-      display: inline-block;
+    /* ── Language toggle ── */
+    .lang-btn {
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 10px;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: color 0.15s, background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .lang-btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    /* ── Scroll progress ── */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: start;
+      padding: 56px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-name {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(28px, 5vw, 40px);
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .hero-nickname {
+      font-size: 0.6em;
+      font-weight: 400;
+      color: var(--text-muted);
+      vertical-align: middle;
+    }
+
+    .hero-role {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-bio {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    .hero-meta {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      min-width: 220px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+
+    .hero-meta strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text-muted);
       margin-bottom: 8px;
     }
 
-    h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
-
-    h1 {
-      font-size: clamp(28px, 4.6vw, 46px);
-      font-weight: 680;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
+    .hero-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
     }
 
-    .nickname {
-      font-size: 0.42em;
-      opacity: 0.42;
-      font-weight: 450;
-      vertical-align: baseline;
-    }
-
-    .subhead {
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 66ch;
-      margin: 0;
+    .hero-avatar {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
     }
 
     .actions {
-      margin-top: 18px;
+      margin-top: 24px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      transition: transform 0.2s ease, filter 0.2s ease;
+      font-family: 'Inter', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
     }
 
     .btn:hover {
+      background: var(--bg-alt);
       text-decoration: none;
-      filter: brightness(1.05);
-      transform: translateY(-1px);
     }
 
-    .btn.alt {
-      background: transparent;
-      color: var(--accent);
+    .btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
     }
 
-    .facts {
-      margin: 10px 0 0;
-      padding: 0;
+    .btn.primary:hover {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+    }
+
+    /* ── Sections ── */
+    main {
+      display: grid;
+      gap: 0;
+    }
+
+    section {
+      display: grid;
+      grid-template-columns: 148px 1fr;
+      gap: 0 40px;
+      padding: 44px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding-top: 3px;   /* aligns baseline with first content line */
+    }
+
+    h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    /* ── About ── */
+    .about-text {
+      font-size: 15px;
+      color: #222;
+      line-height: 1.85;
+    }
+
+    /* ── Education ── */
+    .timeline {
       list-style: none;
       display: grid;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 15px;
+      gap: 22px;
     }
 
-    .facts li {
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: #f1f3f6;
-      border: 1px solid #dde0e6;
+    .timeline li {
+      padding-left: 14px;
+      border-left: 2px solid var(--border);
     }
 
-    main {
-      margin-top: 14px;
+    .timeline li:hover {
+      border-left-color: var(--accent);
+    }
+
+    .item-title {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 3px;
+      line-height: 1.4;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .item-year {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .item-degree {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .award-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      line-height: 1.5;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* ── Interests ── */
+    .interest-list {
+      list-style: none;
       display: grid;
       gap: 12px;
     }
 
-    .section-title {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-    }
-
-    .timeline,
-    .interest-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 10px;
-    }
-
-    .timeline li,
-    .interest-list li,
-    .card {
-      border: 1px solid #dde1e7;
-      border-radius: 14px;
-      background: #f2f4f7;
-      padding: 14px;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-    }
-
-    .timeline li:hover,
-    .interest-list li:hover,
-    .card:hover {
-      transform: translateY(-1px);
-      border-color: #caced6;
-      box-shadow: 0 8px 18px rgba(20, 26, 38, 0.08);
-    }
-
-    .item-title {
-      font-size: 19px;
-      font-weight: 650;
-      letter-spacing: -0.01em;
-      margin-bottom: 4px;
-      overflow-wrap: anywhere;
-    }
-
-    .meta {
-      margin: 0;
+    .interest-list li {
       font-size: 14px;
-      color: var(--muted);
-      overflow-wrap: anywhere;
+      color: #333;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.7;
     }
 
-    p {
-      overflow-wrap: anywhere;
+    .interest-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 13px;
+      top: 1px;
     }
 
-    .grid {
+    /* ── Publications ── */
+    .pub-list {
+      list-style: none;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 24px;
     }
 
-    .single-grid { grid-template-columns: 1fr; }
+    .pub-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+    }
 
-    .chip {
+    .pub-badge {
       display: inline-block;
-      border-radius: 999px;
-      padding: 4px 9px;
-      margin-bottom: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--accent-light);
+      color: var(--accent);
+      white-space: nowrap;
+      margin-top: 3px;
+    }
+
+    .pub-badge.conference {
+      background: #f0fdf4;
+      color: #16a34a;
+    }
+
+    .pub-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+      line-height: 1.55;
+      margin-bottom: 5px;
+    }
+
+    .pub-authors {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .pub-venue {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .pub-link {
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    /* ── News ── */
+    .news-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 16px;
+      align-items: baseline;
+    }
+
+    .news-date {
       font-size: 12px;
-      border: 1px solid #caced6;
-      color: #454954;
-      background: #e8ebf0;
+      font-weight: 500;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .news-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .news-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: #fef9c3;
+      color: #854d0e;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── Projects ── */
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+      background: var(--bg);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .card:hover {
+      border-color: #c0c0c0;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.5;
     }
 
     .video-wrapper {
-      margin-top: 12px;
-      border: 1px solid #ddddE3;
-      border-radius: 14px;
+      margin-top: 16px;
+      border-radius: 8px;
       overflow: hidden;
       background: #000;
       aspect-ratio: 16 / 9;
-      min-height: clamp(320px, 45vw, 620px);
-      width: 100%;
-      max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .video-wrapper iframe {
@@ -350,123 +568,274 @@
       display: block;
     }
 
-    footer {
-      margin-top: 18px;
-      text-align: center;
-      color: var(--muted);
+    /* ── Teaching ── */
+    .course-list {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+
+    .course-list li {
+      border-left: 2px solid var(--border);
+      padding-left: 16px;
+    }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-row {
       font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 8px;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(10px);
+    .contact-label {
+      font-weight: 500;
+      color: var(--text);
+      min-width: 72px;
     }
 
-    .reveal.in-view {
-      animation: reveal 0.65s ease forwards;
+    /* ── Footer ── */
+    footer {
+      margin-top: 48px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
     }
 
-    .d1.in-view { animation-delay: 0.08s; }
-    .d2.in-view { animation-delay: 0.16s; }
-    .d3.in-view { animation-delay: 0.24s; }
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
 
-    @keyframes reveal {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .hero-left {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-bio {
+        text-align: left;
+      }
+
+      .hero-meta {
+        min-width: unset;
+        width: 100%;
+      }
+
+      section {
+        grid-template-columns: 1fr;
+        gap: 12px 0;
+        padding: 32px 0;
+      }
+
+      .section-label {
+        padding-top: 0;
+      }
+
+      .pub-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      /* Topbar: brand left · nav scrolls · lang-btn pinned right */
+      .topbar {
+        padding: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .topbar-content {
+        gap: 6px;
+        flex-wrap: nowrap;
+        height: 48px;
+      }
+
+      .brand {
+        flex-shrink: 0;
+      }
+
+      .nav {
+        flex: 1;
+        min-width: 0;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      }
+
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav a {
+        padding: 0 10px;
+        font-size: 12px;
+        white-space: nowrap;
+        height: 48px;
+        line-height: 48px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .lang-btn {
+        flex-shrink: 0;
+        height: 28px;
+        padding: 0 10px;
       }
     }
 
-    @keyframes floatGlow {
-      0% { transform: translate3d(0, 0, 0) scale(1); }
-      50% { transform: translate3d(12px, 14px, 0) scale(1.06); }
-      100% { transform: translate3d(-8px, -10px, 0) scale(0.98); }
+    @media (max-width: 480px) {
+      .page {
+        padding: 0 16px 60px;
+      }
+
+      .hero {
+        padding: 36px 0 32px;
+      }
+
+      .hero-avatar {
+        width: 96px;
+        height: 96px;
+      }
+
+      .actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        justify-content: center;
+      }
     }
 
-    @media (max-width: 980px) {
-      .hero { grid-template-columns: 1fr; }
+    /* Very small phones: stack news date above text */
+    @media (max-width: 380px) {
+      .news-item {
+        grid-template-columns: 1fr;
+        gap: 3px;
+      }
     }
 
-    @media (max-width: 860px) {
-      .topbar { position: static; }
-      .grid { grid-template-columns: 1fr; }
-      .video-wrapper { min-height: 240px; }
+    /* ── Chinese font mode ── */
+    html.lang-zh body {
+      font-family: 'Noto Sans SC', 'Inter', sans-serif;
+      line-height: 1.8;
+    }
+
+    html.lang-zh .hero-name {
+      font-family: 'Noto Sans SC', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    html.lang-zh .item-title {
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+    }
+
+    html.lang-zh .section-label {
+      letter-spacing: 0.06em;
     }
   </style>
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <div class="page">
-    <div class="topbar reveal">
-      <div class="brand">Robotics Research Portfolio</div>
-      <nav class="nav">
-        <a href="#news">News</a>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#awards">Awards</a>
-        <a href="#interests">Interests</a>
-        <a href="#publications">Publications</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="scroll-progress"><span id="scrollBar"></span></div>
+    <div class="topbar">
+      <div class="topbar-content">
+        <div class="brand">Chao (Frank) Xie</div>
+        <nav class="nav">
+          <a href="#news" data-i18n="nav-news">News</a>
+          <a href="#about" data-i18n="nav-about">About</a>
+          <a href="#education" data-i18n="nav-education">Education</a>
+          <a href="#awards" data-i18n="nav-awards">Awards</a>
+          <a href="#interests" data-i18n="nav-interests">Research</a>
+          <a href="#publications" data-i18n="nav-publications">Publications</a>
+          <a href="#projects" data-i18n="nav-projects">Projects</a>
+          <a href="#contact" data-i18n="nav-contact">Contact</a>
+        </nav>
+        <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">中文</button>
+      </div>
     </div>
 
     <header class="hero">
-      <section class="panel reveal d1">
-        <span class="kicker">Academic Profile</span>
-        <h1>Chao <span class="nickname">(Frank)</span> Xie</h1>
-        <p class="subhead">
-          I research automation in construction with AI and robotics, intelligent design methods,
-          computer vision for 3D perception, and autonomous robotic systems for safer,
-          more efficient, and scalable building processes.
-        </p>
-        <div class="actions">
-          <a class="btn" href="#publications">View Publications</a>
-          <a class="btn alt" href="#contact">Contact</a>
+      <div class="hero-left">
+        <img class="hero-avatar" src="avatar.jpg" alt="Chao Xie">
+        <div>
+          <h1 class="hero-name" data-i18n="hero-name">Chao <span class="hero-nickname">(Frank)</span> Xie</h1>
+          <p class="hero-role" data-i18n="hero-role">Ph.D. Student · University of Florida</p>
+          <p class="hero-bio" data-i18n="hero-bio">
+            I research automation in construction with AI and robotics, intelligent design methods,
+            computer vision for 3D perception, and autonomous robotic systems for smarter,
+            more efficient, safer, and scalable building processes.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#publications" data-i18n="btn-publications">Publications</a>
+            <a class="btn" href="#contact" data-i18n="btn-contact">Contact</a>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <aside class="panel reveal d2">
-        <span class="kicker">Current Position</span>
-        <ul class="facts">
-          <li>University of Florida, Ph.D. Student</li>
-          <li>Design, Construction and Planning (Expected May 2027)</li>
-          <li>Location: Gainesville, FL 32603</li>
-          <li>Focus: AI, robotics, and 3D vision for construction</li>
-        </ul>
+      <aside class="hero-meta" data-i18n="hero-meta">
+        <strong>Info</strong>
+        University of Florida<br>
+        Design, Construction &amp; Planning<br>
+        Expected May 2027<br>
+        Gainesville, FL 32603
       </aside>
     </header>
 
     <main>
-      <section id="news" class="panel reveal d1">
-        <h2 class="section-title">News</h2>
-        <ul class="timeline">
-          <li>
-            <h3 class="item-title">Feb 2026</h3>
-            <p class="meta"><strong>Published</strong> — <em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em> published in <strong>Automation in Construction</strong>. <a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">DOI →</a> <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a></p>
+      <section id="news">
+        <p class="section-label" data-i18n="label-news">News</p>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date" data-i18n="news-date-1">Feb 2026</span>
+            <span class="news-text" data-i18n="news-1">
+              <span class="news-tag">Published</span>
+              <em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em>
+              published in <strong>Automation in Construction</strong>.
+              <a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">DOI →</a>
+              <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a>
+            </span>
           </li>
-          <li>
-            <h3 class="item-title">Feb 2026</h3>
-            <p class="meta"><strong>Dataset Released</strong> — Released <strong>WFC Dataset</strong> — a high-resolution, high-fidelity benchmark dataset capturing real-world wood-frame construction scenes, with peer benchmark results. <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">GitHub →</a></p>
+          <li class="news-item">
+            <span class="news-date" data-i18n="news-date-2">Feb 2026</span>
+            <span class="news-text" data-i18n="news-2">
+              <span class="news-tag">Dataset Released</span>
+              Released <strong>WFC Dataset</strong> — a high-resolution, high-fidelity benchmark dataset capturing real-world wood-frame construction scenes, with peer benchmark results.
+              <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">GitHub →</a>
+            </span>
           </li>
         </ul>
       </section>
 
-      <section id="about" class="panel reveal d1">
-        <h2 class="section-title">Research Overview</h2>
-        <p>
+      <section id="about">
+        <p class="section-label" data-i18n="label-about">Advanced Robotics &amp; Embodied AI</p>
+        <p class="about-text" data-i18n="about-text">
           My research focuses on studying vision-driven closed-loop robotic systems for real-world manipulation and assembly, with a specific focus on construction-scale tasks. It integrates Vision-Language-Action (VLA) models and Reinforcement Learning to tackle environmental variability. By synthesizing 3D perception and mechanical arm visual servoing, the developed systems ensure high-precision execution under uncertainty. My work emphasizes the seamless Sim-to-Real transfer of intelligent policies from high-fidelity digital twins to large-scale industrial workstations.
         </p>
       </section>
 
-      <section id="projects" class="panel reveal d2">
-        <h2 class="section-title">Research Projects</h2>
-        <div class="grid single-grid">
-          <article class="card">
-            <span class="chip">Upcoming Article</span>
-            <h3 class="item-title">Full-Stack Closed-Loop Robotic Assembly System for Wood-Framed Construction</h3>
-            <p class="meta">Demo of an in-progress full-stack system integrating RGB-D enhancement, 3D reconstruction, digital twin alignment, vision servoing, RL-based adaptive control, and real-time error correction for automated construction assembly.</p>
-            <p><a href="https://www.youtube.com/watch?v=vjXvbbGfvfg" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p>
+      <section id="projects">
+        <p class="section-label" data-i18n="label-projects">Featured Projects</p>
+        <div>
+          <div class="card">
+            <p class="card-title" data-i18n="project2-title">Full-Stack Closed-Loop Robotic Assembly System for Wood-Framed Construction</p>
+            <p class="meta" style="margin-top: 4px;"><span class="news-tag" data-i18n="project2-tag">Upcoming Article</span></p>
+            <p class="meta" data-i18n="project2-meta">Demo of an in-progress full-stack system integrating RGB-D enhancement, 3D reconstruction, digital twin alignment, vision servoing, RL-based adaptive control, and real-time error correction for automated construction assembly.</p>
+            <p class="meta" style="margin-top: 6px;"><a href="https://www.youtube.com/watch?v=vjXvbbGfvfg" target="_blank" rel="noopener noreferrer" data-i18n="project2-link">Watch on YouTube →</a></p>
             <div class="video-wrapper">
               <iframe
                 src="https://www.youtube.com/embed/vjXvbbGfvfg"
@@ -477,12 +846,12 @@
                 allowfullscreen>
               </iframe>
             </div>
-          </article>
-          <article class="card">
-            <span class="chip">Journal · Automation in Construction</span>
-            <h3 class="item-title">High-Precision Real-Time Computer Vision 6-DoF Pose Estimation Algorithm Demo</h3>
-            <p class="meta"><em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em></p>
-            <p><a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p>
+          </div>
+          <div class="card" style="margin-top: 16px;">
+            <p class="card-title" data-i18n="project-title">High-Precision Real-Time Computer Vision 6-DoF Pose Estimation Algorithm Demo</p>
+            <p class="meta" style="margin-top: 4px;"><span class="news-tag" data-i18n="project-tag">Journal · Automation in Construction</span></p>
+            <p class="meta" data-i18n="project-meta"><em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em></p>
+            <p class="meta" style="margin-top: 6px;"><a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer" data-i18n="project-link">Watch on YouTube →</a></p>
             <div class="video-wrapper">
               <iframe
                 src="https://www.youtube.com/embed/Lu1Ta6I1sc4"
@@ -493,152 +862,381 @@
                 allowfullscreen>
               </iframe>
             </div>
-          </article>
+          </div>
         </div>
       </section>
 
-      <section id="education" class="panel reveal d2">
-        <h2 class="section-title">Education</h2>
+      <section id="education">
+        <p class="section-label" data-i18n="label-education">Education</p>
         <ul class="timeline">
           <li>
-            <h3 class="item-title">University of Florida</h3>
-            <p class="meta">Ph.D. in Design, Construction and Planning | Expected May 2027 | Gainesville, FL</p>
-            <p class="meta">Full Scholarship &amp; Graduate Assistantship</p>
-            <p class="meta">Research: AI and robotics in construction, intelligent design methods, 3D perception, autonomous robotic systems.</p>
-            <p class="meta">GPA: 3.97</p>
+            <p class="item-title" data-i18n="edu-1-title">University of Florida · Gainesville, FL <span class="item-year">Expected May 2027</span></p>
+            <p class="item-degree" data-i18n="edu-1-degree">Ph.D. in Design, Construction and Planning · GPA: 3.97</p>
+            <p class="meta" data-i18n="edu-funding">Full Scholarship &amp; Graduate Assistantship</p>
+            <p class="meta" data-i18n="edu-1-research">Research: AI and robotics in construction, intelligent design methods, 3D perception, autonomous robotic systems.</p>
           </li>
           <li>
-            <h3 class="item-title">University of Florida</h3>
-            <p class="meta">M.S. in Construction Management | Dec 2023 | Gainesville, FL</p>
-            <p class="meta">Full Scholarship &amp; Graduate Assistantship · <em>Academic Excellence Award — top graduate of the cohort</em></p>
-            <p class="meta">GPA: 4.00</p>
+            <p class="item-title" data-i18n="edu-2-title">University of Florida · Gainesville, FL <span class="item-year">Dec 2023</span></p>
+            <p class="item-degree" data-i18n="edu-2-degree">M.S. in Construction Management · GPA: 4.00</p>
+            <p class="meta" data-i18n="edu-2-honors">Full Scholarship &amp; Graduate Assistantship &nbsp;·&nbsp; <em>Academic Excellence Award — top graduate of the cohort</em></p>
           </li>
           <li>
-            <h3 class="item-title">Southwest Jiaotong University</h3>
-            <p class="meta">B.E. in Environmental Engineering</p>
-            <p class="meta">B.E. in Economics (International Economics and Trade) | Jun 2013 | Chengdu, China</p>
+            <p class="item-title" data-i18n="edu-3-title">Southwest Jiaotong University · Chengdu, China <span class="item-year">Jun 2013</span></p>
+            <p class="item-degree" data-i18n="edu-3-degree1">B.E. in Environmental Engineering</p>
+            <p class="item-degree" data-i18n="edu-3-degree2">B.E. in Economics (International Economics and Trade)</p>
           </li>
         </ul>
       </section>
 
-      <section id="awards" class="panel reveal d2">
-        <h2 class="section-title">Awards &amp; Honors</h2>
+      <section id="awards">
+        <p class="section-label" data-i18n="label-awards">Awards &amp; Honors</p>
         <ul class="timeline">
-          <li><p class="meta">Rinker School Building Construction Scholarship <span style="float:right">Fall 2025</span></p></li>
-          <li><p class="meta">Impressive First — UF Coding Competition (Hackathon) <span style="float:right">Fall 2025</span></p></li>
-          <li><p class="meta">Ingle Family Scholarship <span style="float:right">Spring 2025</span></p></li>
-          <li><p class="meta">Rinker School Building Construction Scholarship <span style="float:right">Spring 2025</span></p></li>
-          <li><p class="meta">Phi Kappa Phi Honor Society <span style="float:right">Spring 2025</span></p></li>
-          <li><p class="meta">Jimmie Hinze Graduate Scholarship <span style="float:right">Fall 2024</span></p></li>
           <li>
-            <p class="meta">CM Masters / Graduate Academic Excellence Award <span style="float:right">Fall 2023</span></p>
-            <p class="meta">1 recipient · University of Florida</p>
+            <p class="award-title" data-i18n="award-1">Rinker School Building Construction Scholarship <span class="item-year">Fall 2025</span></p>
           </li>
-          <li><p class="meta">Sigma Lambda Chi (ΣΛΧ) International Construction Honor Society <span style="float:right">Fall 2023</span></p></li>
+          <li>
+            <p class="award-title" data-i18n="award-2">Impressive First — UF Coding Competition (Hackathon) <span class="item-year">Fall 2025</span></p>
+          </li>
+          <li>
+            <p class="award-title" data-i18n="award-3">Ingle Family Scholarship <span class="item-year">Spring 2025</span></p>
+          </li>
+          <li>
+            <p class="award-title" data-i18n="award-4">Rinker School Building Construction Scholarship <span class="item-year">Spring 2025</span></p>
+          </li>
+          <li>
+            <p class="award-title" data-i18n="award-5">Phi Kappa Phi Honor Society <span class="item-year">Spring 2025</span></p>
+          </li>
+          <li>
+            <p class="award-title" data-i18n="award-6">Jimmie Hinze Graduate Scholarship <span class="item-year">Fall 2024</span></p>
+          </li>
+          <li>
+            <p class="award-title" data-i18n="award-7">CM Masters / Graduate Academic Excellence Award <span class="item-year">Fall 2023</span></p>
+            <p class="meta" data-i18n="award-7-meta">1 recipient · University of Florida</p>
+          </li>
+          <li>
+            <p class="award-title" data-i18n="award-8">Sigma Lambda Chi (ΣΛΧ) International Construction Honor Society <span class="item-year">Fall 2023</span></p>
+          </li>
         </ul>
       </section>
 
-      <section id="interests" class="panel reveal d3">
-        <h2 class="section-title">Research Interests</h2>
+      <section id="interests">
+        <p class="section-label" data-i18n="label-interests">Research Interests</p>
         <ul class="interest-list">
-          <li><strong>Embodied AI &amp; VLA Models:</strong> Developing Vision-Language-Action architectures that bridge high-level semantic reasoning with low-level motor control for generalizable task planning.</li>
-          <li><strong>3D Scene Understanding for Action:</strong> Engineering robust 6DoF object pose estimation and tracking algorithms using RGB-D data and point cloud geometry to enable precise manipulation.</li>
-          <li><strong>Active Perception &amp; Object-level Reasoning:</strong> Leveraging geometric constraints and semantic priors to resolve state estimation under heavy occlusion and environmental uncertainty.</li>
-          <li><strong>Closed-loop Visual Servoing:</strong> Implementing adaptive control laws and real-time feedback loops for precision-critical assembly and construction-scale tasks.</li>
-          <li><strong>Robotic Assembly under Uncertainty:</strong> Addressing complex challenges in symmetry, tight tolerances, and imperfect components through perception-action coupling.</li>
-          <li><strong>Perception-Planning-Execution Co-design:</strong> Architecting integrated systems that ensure reliable deployment on large-scale industrial workstations.</li>
-          <li><strong>Digital Twins &amp; Sim-to-Real Pipelines:</strong> Building high-fidelity simulations to facilitate the scalable development and transfer of intelligent robotic policies.</li>
+          <li data-i18n="interest-1"><strong>Embodied AI &amp; VLA Models:</strong> Developing Vision-Language-Action architectures that bridge high-level semantic reasoning with low-level motor control for generalizable task planning.</li>
+          <li data-i18n="interest-2"><strong>3D Scene Understanding for Action:</strong> Engineering robust 6DoF object pose estimation and tracking algorithms using RGB-D data and point cloud geometry to enable precise manipulation.</li>
+          <li data-i18n="interest-3"><strong>Active Perception &amp; Object-level Reasoning:</strong> Leveraging geometric constraints and semantic priors to resolve state estimation under heavy occlusion and environmental uncertainty.</li>
+          <li data-i18n="interest-4"><strong>Closed-loop Visual Servoing:</strong> Implementing adaptive control laws and real-time feedback loops for precision-critical assembly and construction-scale tasks.</li>
+          <li data-i18n="interest-5"><strong>Robotic Assembly under Uncertainty:</strong> Addressing complex challenges in symmetry, tight tolerances, and imperfect components through perception-action coupling.</li>
+          <li data-i18n="interest-6"><strong>Perception-Planning-Execution Co-design:</strong> Architecting integrated systems that ensure reliable deployment on large-scale industrial workstations.</li>
+          <li data-i18n="interest-7"><strong>Digital Twins &amp; Sim-to-Real Pipelines:</strong> Building high-fidelity simulations to facilitate the scalable development and transfer of intelligent robotic policies.</li>
         </ul>
       </section>
 
-      <section id="publications" class="panel reveal d1">
-        <h2 class="section-title">Selected Publications</h2>
-        <div class="grid single-grid">
-          <article class="card">
-            <span class="chip">Journal</span>
-            <h3 class="item-title"><a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</a></h3>
-            <p class="meta">Authors: Chao Xie, Aladdin Alwisy</p>
-            <p><a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">DOI</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">Demo Video</a></p>
-          </article>
-          <article class="card">
-            <span class="chip">Conference | CRC 2024</span>
-            <h3 class="item-title"><a href="https://doi.org/10.1061/9780784485262.047" target="_blank" rel="noopener noreferrer">A Framework for Automated Quality Control of Wood-Framed Panels in Robotic-Based Manufacturing Using Computer Vision and Deep Learning</a></h3>
-            <p class="meta">ASCE Construction Research Congress (CRC), 2024</p>
-          </article>
-          <article class="card">
-            <span class="chip">Conference | ConIC 2026</span>
-            <h3 class="item-title">Quantitative Analysis of the Role of Robotics in Promoting Industrialized Construction for Resilient Post-Disaster Recovery: Exploratory Research</h3>
-            <p class="meta">ConIC, 2026</p>
-          </article>
-          <article class="card">
-            <span class="chip">Conference | I3CE 2026</span>
-            <h3 class="item-title">Digital Twin-Enabled Adaptive Control for Perception-Driven Robotic Assembly in Industrialized Construction</h3>
-            <p class="meta">I3CE, 2026</p>
-          </article>
-          <article class="card">
-            <span class="chip">Conference | CRC 2026</span>
-            <h3 class="item-title">Bridging the Gap: A Framework for Robotics Education in Industrialized Construction</h3>
-            <p class="meta">ASCE Construction Research Congress (CRC), 2026</p>
-          </article>
+      <section id="publications">
+        <p class="section-label" data-i18n="label-publications">Publications</p>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <span class="pub-badge" data-i18n="badge-journal">Journal</span>
+            <div>
+              <p class="pub-title"><a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</a></p>
+              <p class="pub-authors">Chao Xie, Aladdin Alwisy</p>
+              <p class="pub-venue" data-i18n="pub-1-venue">Automation in Construction, 2026</p>
+              <p class="pub-link" data-i18n="pub-1-links">
+                <a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">DOI →</a>
+                &nbsp;·&nbsp;
+                <a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">Demo Video →</a>
+                &nbsp;·&nbsp;
+                <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a>
+              </p>
+            </div>
+          </li>
+          <li class="pub-item">
+            <span class="pub-badge conference" data-i18n="badge-conference">Conference</span>
+            <div>
+              <p class="pub-title"><a href="https://doi.org/10.1061/9780784485262.047" target="_blank" rel="noopener noreferrer">A Framework for Automated Quality Control of Wood-Framed Panels in Robotic-Based Manufacturing Using Computer Vision and Deep Learning</a></p>
+              <p class="pub-venue" data-i18n="pub-2-venue">ASCE Construction Research Congress (CRC), 2024</p>
+            </div>
+          </li>
+          <li class="pub-item">
+            <span class="pub-badge conference" data-i18n="badge-conference">Conference</span>
+            <div>
+              <p class="pub-title">Quantitative Analysis of the Role of Robotics in Promoting Industrialized Construction for Resilient Post-Disaster Recovery: Exploratory Research</p>
+              <p class="pub-venue">ConIC, 2026</p>
+            </div>
+          </li>
+          <li class="pub-item">
+            <span class="pub-badge conference" data-i18n="badge-conference">Conference</span>
+            <div>
+              <p class="pub-title">Digital Twin-Enabled Adaptive Control for Perception-Driven Robotic Assembly in Industrialized Construction</p>
+              <p class="pub-venue">I3CE, 2026</p>
+            </div>
+          </li>
+          <li class="pub-item">
+            <span class="pub-badge conference" data-i18n="badge-conference">Conference</span>
+            <div>
+              <p class="pub-title">Bridging the Gap: A Framework for Robotics Education in Industrialized Construction</p>
+              <p class="pub-venue" data-i18n="pub-5-venue">ASCE Construction Research Congress (CRC), 2026</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="talks">
+        <p class="section-label" data-i18n="label-teaching">Teaching</p>
+        <ul class="course-list">
+          <li>
+            <p class="item-title" data-i18n="teach-1-title">BCN4612C — Construction Estimating 2</p>
+            <p class="meta" data-i18n="teach-1-meta">Instructor · Taught every semester</p>
+          </li>
+          <li>
+            <p class="item-title" data-i18n="teach-2-title">BCN5905 — Advanced Construction Technology (Autodesk-Funded Course)</p>
+            <p class="meta" data-i18n="teach-2-meta">Course Creator and Instructor</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <p class="section-label" data-i18n="label-contact">Contact</p>
+        <p class="meta" style="margin-bottom: 16px;" data-i18n="contact-intro">I welcome collaboration and invited talk opportunities.</p>
+        <div class="contact-grid">
+          <div class="contact-row">
+            <span class="contact-label" data-i18n="contact-email-label">Email</span>
+            <a href="mailto:xie.chao@ufl.edu">xie.chao@ufl.edu</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">LinkedIn</span>
+            <a href="https://linkedin.com/in/chao-xie-7b35ab255/" target="_blank" rel="noopener noreferrer">linkedin.com/in/chao-xie-7b35ab255/</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label" data-i18n="contact-location-label">Location</span>
+            <span>Gainesville, FL 32603</span>
+          </div>
         </div>
-      </section>
-
-      <section id="talks" class="panel reveal d3">
-        <h2 class="section-title">Teaching</h2>
-        <ul class="timeline">
-          <li>
-            <h3 class="item-title">BCN4612C — Construction Estimating 2</h3>
-            <p class="meta">Instructor · Taught every semester</p>
-          </li>
-          <li>
-            <h3 class="item-title">BCN5905 — Advanced Construction Technology (Autodesk-Funded Course)</h3>
-            <p class="meta">Course Creator and Instructor</p>
-          </li>
-        </ul>
-      </section>
-
-      <section id="contact" class="panel reveal d1">
-        <h2 class="section-title">Contact</h2>
-        <p>I welcome collaboration and invited talk opportunities.</p>
-        <p class="meta">Email: <a href="mailto:xie.chao@ufl.edu">xie.chao@ufl.edu</a></p>
-        <p class="meta">LinkedIn: <a href="https://linkedin.com/in/chao-xie-7b35ab255/">linkedin.com/in/chao-xie-7b35ab255/</a></p>
-        <p class="meta">Location: Gainesville, FL 32603</p>
       </section>
     </main>
 
-    <footer>© 2026 Chao (Frank) Xie</footer>
+    <footer>
+      <p>© 2026 Chao (Frank) Xie</p>
+    </footer>
   </div>
+
   <script>
-    (function () {
-      var elements = document.querySelectorAll(".reveal");
-      var progress = document.getElementById("scrollBar");
+    // ── Scroll progress bar ──
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
 
-      if ("IntersectionObserver" in window) {
-        var observer = new IntersectionObserver(function (entries, ob) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in-view");
-              ob.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.14 });
+    // ── Smooth scroll ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
 
-        elements.forEach(function (el) { observer.observe(el); });
-      } else {
-        elements.forEach(function (el) { el.classList.add("in-view"); });
+    // ── Fade-in on scroll ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('section, .card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+
+    // ── i18n ──
+    const translations = {
+      en: {
+        'hero-name': 'Chao <span class="hero-nickname">(Frank)</span> Xie',
+        'nav-news': 'News',
+        'nav-about': 'About',
+        'nav-education': 'Education',
+        'nav-awards': 'Awards',
+        'nav-interests': 'Research',
+        'nav-publications': 'Publications',
+        'nav-projects': 'Projects',
+        'nav-contact': 'Contact',
+        'hero-role': 'Ph.D. Student · University of Florida',
+        'hero-bio': 'I research automation in construction with AI and robotics, intelligent design methods, computer vision for 3D perception, and autonomous robotic systems for smarter, more efficient, safer, and scalable building processes.',
+        'btn-publications': 'Publications',
+        'btn-contact': 'Contact',
+        'hero-meta': '<strong>Info</strong>\n        University of Florida<br>\n        Design, Construction &amp; Planning<br>\n        Expected May 2027<br>\n        Gainesville, FL 32603',
+        'label-news': 'News',
+        'label-about': 'Advanced Robotics &amp; Embodied AI',
+        'label-projects': 'Featured Projects',
+        'label-education': 'Education',
+        'label-awards': 'Awards &amp; Honors',
+        'label-interests': 'Research Interests',
+        'label-publications': 'Publications',
+        'label-teaching': 'Teaching',
+        'label-contact': 'Contact',
+        'news-1': '<span class="news-tag">Published</span> <em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em> published in <strong>Automation in Construction</strong>. <a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">DOI →</a> <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a>',
+        'news-2': '<span class="news-tag">Dataset Released</span> Released <strong>WFC Dataset</strong> — a high-resolution, high-fidelity benchmark dataset capturing real-world wood-frame construction scenes, with peer benchmark results. <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">GitHub →</a>',
+        'about-text': 'My research focuses on studying vision-driven closed-loop robotic systems for real-world manipulation and assembly, with a specific focus on construction-scale tasks. It integrates Vision-Language-Action (VLA) models and Reinforcement Learning to tackle environmental variability. By synthesizing 3D perception and mechanical arm visual servoing, the developed systems ensure high-precision execution under uncertainty. My work emphasizes the seamless Sim-to-Real transfer of intelligent policies from high-fidelity digital twins to large-scale industrial workstations.',
+        'project2-title': 'Full-Stack Closed-Loop Robotic Assembly System for Wood-Framed Construction',
+        'project2-tag': 'Upcoming Article',
+        'project2-meta': 'Demo of an in-progress full-stack system integrating RGB-D enhancement, 3D reconstruction, digital twin alignment, vision servoing, RL-based adaptive control, and real-time error correction for automated construction assembly.',
+        'project2-link': 'Watch on YouTube →',
+        'project-title': 'High-Precision Real-Time Computer Vision 6-DoF Pose Estimation Algorithm Demo',
+        'project-tag': 'Journal · Automation in Construction',
+        'project-meta': '<em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em>',
+        'project-link': 'Watch on YouTube →',
+        'edu-1-title': 'University of Florida · Gainesville, FL <span class="item-year">Expected May 2027</span>',
+        'edu-1-degree': 'Ph.D. in Design, Construction and Planning · GPA: 3.97',
+        'edu-funding': 'Full Scholarship &amp; Graduate Assistantship',
+        'edu-1-research': 'Research: AI and robotics in construction, intelligent design methods, 3D perception, autonomous robotic systems.',
+        'edu-2-title': 'University of Florida · Gainesville, FL <span class="item-year">Dec 2023</span>',
+        'edu-2-degree': 'M.S. in Construction Management · GPA: 4.00',
+        'edu-2-honors': 'Full Scholarship &amp; Graduate Assistantship &nbsp;·&nbsp; <em>Academic Excellence Award — top graduate of the cohort</em>',
+        'edu-3-title': 'Southwest Jiaotong University · Chengdu, China <span class="item-year">Jun 2013</span>',
+        'edu-3-degree1': 'B.E. in Environmental Engineering',
+        'edu-3-degree2': 'B.E. in Economics (International Economics and Trade)',
+        'award-1': 'Rinker School Building Construction Scholarship <span class="item-year">Fall 2025</span>',
+        'award-2': 'Impressive First — UF Coding Competition (Hackathon) <span class="item-year">Fall 2025</span>',
+        'award-3': 'Ingle Family Scholarship <span class="item-year">Spring 2025</span>',
+        'award-4': 'Rinker School Building Construction Scholarship <span class="item-year">Spring 2025</span>',
+        'award-5': 'Phi Kappa Phi Honor Society <span class="item-year">Spring 2025</span>',
+        'award-6': 'Jimmie Hinze Graduate Scholarship <span class="item-year">Fall 2024</span>',
+        'award-7': 'CM Masters / Graduate Academic Excellence Award <span class="item-year">Fall 2023</span>',
+        'award-7-meta': '1 recipient · University of Florida',
+        'award-8': 'Sigma Lambda Chi (ΣΛΧ) International Construction Honor Society <span class="item-year">Fall 2023</span>',
+        'interest-1': '<strong>Embodied AI &amp; VLA Models:</strong> Developing Vision-Language-Action architectures that bridge high-level semantic reasoning with low-level motor control for generalizable task planning.',
+        'interest-2': '<strong>3D Scene Understanding for Action:</strong> Engineering robust 6DoF object pose estimation and tracking algorithms using RGB-D data and point cloud geometry to enable precise manipulation.',
+        'interest-3': '<strong>Active Perception &amp; Object-level Reasoning:</strong> Leveraging geometric constraints and semantic priors to resolve state estimation under heavy occlusion and environmental uncertainty.',
+        'interest-4': '<strong>Closed-loop Visual Servoing:</strong> Implementing adaptive control laws and real-time feedback loops for precision-critical assembly and construction-scale tasks.',
+        'interest-5': '<strong>Robotic Assembly under Uncertainty:</strong> Addressing complex challenges in symmetry, tight tolerances, and imperfect components through perception-action coupling.',
+        'interest-6': '<strong>Perception-Planning-Execution Co-design:</strong> Architecting integrated systems that ensure reliable deployment on large-scale industrial workstations.',
+        'interest-7': '<strong>Digital Twins &amp; Sim-to-Real Pipelines:</strong> Building high-fidelity simulations to facilitate the scalable development and transfer of intelligent robotic policies.',
+        'badge-journal': 'Journal',
+        'badge-conference': 'Conference',
+        'pub-1-venue': 'Automation in Construction, 2026',
+        'pub-1-links': '<a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">DOI →</a> &nbsp;·&nbsp; <a href="#projects">Demo Video →</a> &nbsp;·&nbsp; <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a>',
+        'pub-2-venue': 'ASCE Construction Research Congress (CRC), 2024',
+        'pub-5-venue': 'ASCE Construction Research Congress (CRC), 2026',
+        'teach-1-title': 'BCN4612C — Construction Estimating 2',
+        'teach-1-meta': 'Instructor · Taught every semester',
+        'teach-2-title': 'BCN5905 — Advanced Construction Technology (Autodesk-Funded Course)',
+        'teach-2-meta': 'Course Creator and Instructor',
+        'contact-intro': 'I welcome collaboration and invited talk opportunities.',
+        'contact-email-label': 'Email',
+        'contact-location-label': 'Location',
+        'news-date-1': 'Feb 2026',
+        'news-date-2': 'Feb 2026',
+      },
+      zh: {
+        'hero-name': '谢超',
+        'nav-news': '动态',
+        'nav-about': '关于',
+        'nav-education': '教育',
+        'nav-awards': '奖项',
+        'nav-interests': '研究',
+        'nav-publications': '论文',
+        'nav-projects': '项目',
+        'nav-contact': '联系',
+        'hero-role': '博士研究生 · 佛罗里达大学',
+        'hero-bio': '我的研究聚焦于 AI 与机器人在建筑领域的自动化应用、智能设计方法、三维感知计算机视觉，以及用于更智能、高效、安全、可扩展建造流程的自主机器人系统。',
+        'btn-publications': '论文发表',
+        'btn-contact': '联系我',
+        'hero-meta': '<strong>基本信息</strong>\n        佛罗里达大学<br>\n        设计、建造与规划学院<br>\n        预计 2027 年 5 月毕业<br>\n        佛罗里达州盖恩斯维尔',
+        'label-news': '最新动态',
+        'label-about': '高级机器人与具身智能',
+        'label-projects': '代表项目（2项）',
+        'label-education': '教育背景',
+        'label-awards': '奖项与荣誉',
+        'label-interests': '研究方向',
+        'label-publications': '论文发表',
+        'label-teaching': '教学经历',
+        'label-contact': '联系方式',
+        'news-1': '<span class="news-tag">论文发表</span> <em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em> 已在 <strong>Automation in Construction</strong> 正式发表。<a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">DOI →</a> <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">数据集 →</a>',
+        'news-2': '<span class="news-tag">数据集发布</span> 发布了 <strong>WFC Dataset</strong>——一个高分辨率、高保真的真实世界木框架建筑场景基准数据集，含同行基准测试结果。<a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">GitHub →</a>',
+        'about-text': '我的研究专注于视觉驱动的闭环机器人系统，用于真实世界的操控与装配任务，尤其聚焦于建筑规模化智能建造的应用场景。研究整合了视觉-语言-行动（VLA）模型与强化学习，以应对环境变异性。通过融合三维感知技术与机械臂视觉伺服，所开发的系统在不确定条件下实现高精度执行。本研究着重强调智能策略从高保真数字孪生到大规模工业工作站的 Sim-to-Real 无缝迁移。',
+        'project2-title': '面向木框架建筑的全栈闭环机器人装配系统',
+        'project2-tag': '在投论文',
+        'project2-meta': '在研论文演示视频，系统集成了深度图像增强、三维重建、数字孪生对齐、视觉伺服、基于强化学习的自适应控制与实时误差校正，用于自动化建筑装配。',
+        'project2-link': '在 YouTube 上观看 →',
+        'project-title': '高精度实时计算机视觉 6-DoF 位姿估计算法演示',
+        'project-tag': '期刊 · Automation in Construction',
+        'project-meta': '<em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em>',
+        'project-link': '在 YouTube 上观看 →',
+        'edu-1-title': '佛罗里达大学 · 盖恩斯维尔，佛罗里达州 <span class="item-year">预计 2027 年 5 月</span>',
+        'edu-1-degree': '设计、建造与规划学院 博士 · GPA: 3.97',
+        'edu-funding': '全额奖学金及助研职位',
+        'edu-1-research': '研究方向：建筑领域的 AI 与机器人、智能设计方法、三维感知、自主机器人系统。',
+        'edu-2-title': '佛罗里达大学 · 盖恩斯维尔，佛罗里达州 <span class="item-year">2023 年 12 月</span>',
+        'edu-2-degree': '建设管理硕士 · GPA: 4.00',
+        'edu-2-honors': '全额奖学金及助研职位 &nbsp;·&nbsp; <em>学术卓越奖 — 研究生排名第 1</em>',
+        'edu-3-title': '西南交通大学 · 成都，中国 <span class="item-year">2013 年 6 月</span>',
+        'edu-3-degree1': '环境工程学士',
+        'edu-3-degree2': '经济学学士（国际经济与贸易）',
+        'award-1': 'Rinker 学院建筑施工奖学金 <span class="item-year">2025 年秋</span>',
+        'award-2': '一等奖 — 佛罗里达大学编程竞赛（黑客马拉松）<span class="item-year">2025 年秋</span>',
+        'award-3': 'Ingle 家族奖学金 <span class="item-year">2025 年春</span>',
+        'award-4': 'Rinker 学院建筑施工奖学金 <span class="item-year">2025 年春</span>',
+        'award-5': 'Phi Kappa Phi 荣誉学会 <span class="item-year">2025 年春</span>',
+        'award-6': 'Jimmie Hinze 研究生奖学金 <span class="item-year">2024 年秋</span>',
+        'award-7': '建设管理硕士/研究生学业卓越奖 <span class="item-year">2023 年秋</span>',
+        'award-7-meta': '全校唯一获奖者 · 佛罗里达大学',
+        'award-8': 'Sigma Lambda Chi (ΣΛΧ) 国际建筑荣誉学会 <span class="item-year">2023 年秋</span>',
+        'interest-1': '<strong>具身智能与 VLA 模型：</strong>开发视觉-语言-行动（VLA）架构，将高层语义推理与底层运动控制相结合，实现可泛化的任务规划。',
+        'interest-2': '<strong>面向行动的三维场景理解：</strong>利用 RGB-D 数据与点云几何，构建鲁棒的 6DoF 物体位姿估计与跟踪算法，实现精确操控。',
+        'interest-3': '<strong>主动感知与物体级推理：</strong>利用几何约束与语义先验，解决重度遮挡与环境不确定性下的状态估计问题。',
+        'interest-4': '<strong>闭环视觉伺服：</strong>实现自适应控制律与实时反馈回路，用于精度要求高的装配与建筑规模任务。',
+        'interest-5': '<strong>不确定性下的机器人装配：</strong>通过感知-行动耦合，应对对称性、严格公差和不完整构件等复杂挑战。',
+        'interest-6': '<strong>感知-规划-执行协同设计：</strong>架构一体化系统，确保在大规模工业工作站上的可靠部署。',
+        'interest-7': '<strong>数字孪生与 Sim-to-Real 迁移：</strong>构建高保真仿真环境，促进智能机器人策略的可扩展开发与迁移。',
+        'badge-journal': '期刊',
+        'badge-conference': '会议',
+        'pub-1-venue': '《Automation in Construction》，2026',
+        'pub-1-links': '<a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">DOI →</a> &nbsp;·&nbsp; <a href="#projects">演示视频 →</a> &nbsp;·&nbsp; <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">数据集 →</a>',
+        'pub-2-venue': 'ASCE 建筑研究大会（CRC），2024',
+        'pub-5-venue': 'ASCE 建筑研究大会（CRC），2026',
+        'teach-1-title': 'BCN4612C — 建筑估价 2',
+        'teach-1-meta': '授课教师 · 每学期开课',
+        'teach-2-title': 'BCN5905 — 高级建筑技术（Autodesk 资助课程）',
+        'teach-2-meta': '课程创始人及授课教师',
+        'contact-intro': '欢迎学术合作与受邀演讲的机会。',
+        'contact-email-label': '邮箱',
+        'contact-location-label': '地址',
+        'news-date-1': '2026 年 2 月',
+        'news-date-2': '2026 年 2 月',
       }
+    };
 
-      function updateScrollProgress() {
-        var doc = document.documentElement;
-        var max = doc.scrollHeight - doc.clientHeight;
-        var pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
-        progress.style.width = pct + "%";
-      }
+    let currentLang = localStorage.getItem('lang') || 'en';
 
-      updateScrollProgress();
-      window.addEventListener("scroll", updateScrollProgress, { passive: true });
-      window.addEventListener("resize", updateScrollProgress);
-    })();
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.documentElement.classList.toggle('lang-zh', lang === 'zh');
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const t = translations[lang][key];
+        if (t !== undefined) el.innerHTML = t;
+      });
+      localStorage.setItem('lang', lang);
+      document.getElementById('lang-toggle').textContent = lang === 'zh' ? 'EN' : '中文';
+    }
+
+    function toggleLang() {
+      setLang(currentLang === 'zh' ? 'en' : 'zh');
+    }
+
+    // Init
+    setLang(currentLang);
   </script>
 </body>
 </html>
