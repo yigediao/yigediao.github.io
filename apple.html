@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chao (Frank) Xie | Research Homepage</title>
+  <meta name="description" content="Chao (Frank) Xie research homepage: AI and robotics in construction, intelligent design, and 3D computer vision." />
+  <style>
+    :root {
+      --bg: #eef0f3;
+      --panel: #f7f8fa;
+      --text: #1d1d1f;
+      --muted: #62646b;
+      --line: #c9ccd3;
+      --accent: #0071e3;
+      --shadow: 0 10px 28px rgba(15, 20, 30, 0.08);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -20%, #f9fafc 0%, transparent 60%),
+        radial-gradient(1000px 520px at 100% 0%, #e5eaf1 0%, transparent 55%),
+        var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      width: 42vw;
+      height: 42vw;
+      max-width: 520px;
+      max-height: 520px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(24px);
+      opacity: 0.35;
+      animation: floatGlow 14s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      top: -140px;
+      left: -120px;
+      background: radial-gradient(circle, rgba(0, 113, 227, 0.24) 0%, rgba(0, 113, 227, 0) 68%);
+    }
+
+    body::after {
+      right: -140px;
+      bottom: -140px;
+      background: radial-gradient(circle, rgba(88, 86, 214, 0.18) 0%, rgba(88, 86, 214, 0) 70%);
+      animation-delay: 1.2s;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 22px 18px 64px;
+    }
+
+    .page > .topbar,
+    .page > .hero,
+    .page > main,
+    .page > footer {
+      width: 100%;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      background: rgba(243, 245, 248, 0.82);
+      backdrop-filter: saturate(180%) blur(18px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .scroll-progress {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .scroll-progress span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #0071e3, #5e5ce6);
+      transition: width 0.12s linear;
+    }
+
+    .brand {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      font-size: 13px;
+      color: #3a3a3c;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav a:hover {
+      background: #f2f2f5;
+      border-color: #e5e5ea;
+      text-decoration: none;
+    }
+
+    .hero {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid #d8dbe2;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+      min-width: 0;
+    }
+
+    .panel:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+    }
+
+    .kicker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
+
+    h1 {
+      font-size: clamp(28px, 4.6vw, 46px);
+      font-weight: 680;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .nickname {
+      font-size: 0.42em;
+      opacity: 0.42;
+      font-weight: 450;
+      vertical-align: baseline;
+    }
+
+    .subhead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 66ch;
+      margin: 0;
+    }
+
+    .actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .btn.alt {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .facts {
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .facts li {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #f1f3f6;
+      border: 1px solid #dde0e6;
+    }
+
+    main {
+      margin-top: 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .timeline,
+    .interest-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .timeline li,
+    .interest-list li,
+    .card {
+      border: 1px solid #dde1e7;
+      border-radius: 14px;
+      background: #f2f4f7;
+      padding: 14px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .timeline li:hover,
+    .interest-list li:hover,
+    .card:hover {
+      transform: translateY(-1px);
+      border-color: #caced6;
+      box-shadow: 0 8px 18px rgba(20, 26, 38, 0.08);
+    }
+
+    .item-title {
+      font-size: 19px;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .meta {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+
+    p {
+      overflow-wrap: anywhere;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .single-grid { grid-template-columns: 1fr; }
+
+    .chip {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 4px 9px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      border: 1px solid #caced6;
+      color: #454954;
+      background: #e8ebf0;
+    }
+
+    .video-wrapper {
+      margin-top: 12px;
+      border: 1px solid #ddddE3;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16 / 9;
+      min-height: clamp(320px, 45vw, 620px);
+      width: 100%;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    footer {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .reveal.in-view {
+      animation: reveal 0.65s ease forwards;
+    }
+
+    .d1.in-view { animation-delay: 0.08s; }
+    .d2.in-view { animation-delay: 0.16s; }
+    .d3.in-view { animation-delay: 0.24s; }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(12px, 14px, 0) scale(1.06); }
+      100% { transform: translate3d(-8px, -10px, 0) scale(0.98); }
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 860px) {
+      .topbar {
+        position: static;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 12px;
+      }
+
+      .brand { text-align: center; }
+
+      .nav {
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .nav a {
+        font-size: 12px;
+        padding: 6px 8px;
+      }
+
+      .grid { grid-template-columns: 1fr; }
+
+      .video-wrapper {
+        min-height: 200px;
+        max-width: 100%;
+      }
+
+      .section-title { font-size: 22px; }
+
+      .panel { padding: 18px; }
+
+      h1 { font-size: clamp(22px, 5vw, 34px); }
+
+      .subhead { font-size: 16px; }
+
+      .timeline li .meta span[style*="float"] {
+        float: none !important;
+        display: block;
+        margin-top: 2px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page { padding: 12px 10px 48px; }
+
+      .topbar {
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .nav a {
+        font-size: 11px;
+        padding: 5px 7px;
+      }
+
+      .panel {
+        border-radius: 14px;
+        padding: 14px;
+      }
+
+      h1 { font-size: 22px; }
+
+      .subhead { font-size: 15px; }
+
+      .section-title { font-size: 20px; }
+
+      .item-title { font-size: 16px; }
+
+      .meta { font-size: 13px; }
+
+      .actions { flex-direction: column; }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+      }
+
+      .facts li {
+        font-size: 14px;
+        padding: 8px 10px;
+      }
+
+      .chip { font-size: 11px; }
+
+      .video-wrapper { min-height: 180px; }
+
+      .kicker { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar reveal">
+      <div class="brand">Robotics Research Portfolio</div>
+      <nav class="nav">
+        <a href="#news">News</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#awards">Awards</a>
+        <a href="#interests">Interests</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="scroll-progress"><span id="scrollBar"></span></div>
+    </div>
+
+    <header class="hero">
+      <section class="panel reveal d1">
+        <span class="kicker">Academic Profile</span>
+        <h1>Chao <span class="nickname">(Frank)</span> Xie</h1>
+        <p class="subhead">
+          I research automation in construction with AI and robotics, intelligent design methods,
+          computer vision for 3D perception, and autonomous robotic systems for safer,
+          more efficient, and scalable building processes.
+        </p>
+        <div class="actions">
+          <a class="btn" href="#publications">View Publications</a>
+          <a class="btn alt" href="#contact">Contact</a>
+        </div>
+      </section>
+
+      <aside class="panel reveal d2">
+        <span class="kicker">Current Position</span>
+        <ul class="facts">
+          <li>University of Florida, Ph.D. Student</li>
+          <li>Design, Construction and Planning (Expected May 2027)</li>
+          <li>Location: Gainesville, FL 32603</li>
+          <li>Focus: AI, robotics, and 3D vision for construction</li>
+        </ul>
+      </aside>
+    </header>
+
+    <main>
+      <section id="news" class="panel reveal d1">
+        <h2 class="section-title">News</h2>
+        <ul class="timeline">
+          <li>
+            <h3 class="item-title">Feb 2026</h3>
+            <p class="meta"><strong>Published</strong> — <em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em> published in <strong>Automation in Construction</strong>. <a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">DOI →</a> <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">Dataset →</a></p>
+          </li>
+          <li>
+            <h3 class="item-title">Feb 2026</h3>
+            <p class="meta"><strong>Dataset Released</strong> — Released <strong>WFC Dataset</strong> — a high-resolution, high-fidelity benchmark dataset capturing real-world wood-frame construction scenes, with peer benchmark results. <a href="https://github.com/yigediao/wfcdataset" target="_blank" rel="noopener noreferrer">GitHub →</a></p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="about" class="panel reveal d1">
+        <h2 class="section-title">Research Overview</h2>
+        <p>
+          My research focuses on studying vision-driven closed-loop robotic systems for real-world manipulation and assembly, with a specific focus on construction-scale tasks. It integrates Vision-Language-Action (VLA) models and Reinforcement Learning to tackle environmental variability. By synthesizing 3D perception and mechanical arm visual servoing, the developed systems ensure high-precision execution under uncertainty. My work emphasizes the seamless Sim-to-Real transfer of intelligent policies from high-fidelity digital twins to large-scale industrial workstations.
+        </p>
+      </section>
+
+      <section id="projects" class="panel reveal d2">
+        <h2 class="section-title">Research Projects</h2>
+        <div class="grid single-grid">
+          <article class="card">
+            <span class="chip">Upcoming Article</span>
+            <h3 class="item-title">Full-Stack Closed-Loop Robotic Assembly System for Wood-Framed Construction</h3>
+            <p class="meta">Demo of an in-progress full-stack system integrating RGB-D enhancement, 3D reconstruction, digital twin alignment, vision servoing, RL-based adaptive control, and real-time error correction for automated construction assembly.</p>
+            <p><a href="https://www.youtube.com/watch?v=vjXvbbGfvfg" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p>
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/vjXvbbGfvfg"
+                title="Full-stack closed-loop robotic assembly demo"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </article>
+          <article class="card">
+            <span class="chip">Journal · Automation in Construction</span>
+            <h3 class="item-title">High-Precision Real-Time Computer Vision 6-DoF Pose Estimation Algorithm Demo</h3>
+            <p class="meta"><em>Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</em></p>
+            <p><a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p>
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/Lu1Ta6I1sc4"
+                title="Project demo video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="education" class="panel reveal d2">
+        <h2 class="section-title">Education</h2>
+        <ul class="timeline">
+          <li>
+            <h3 class="item-title">University of Florida</h3>
+            <p class="meta">Ph.D. in Design, Construction and Planning | Expected May 2027 | Gainesville, FL</p>
+            <p class="meta">Full Scholarship &amp; Graduate Assistantship</p>
+            <p class="meta">Research: AI and robotics in construction, intelligent design methods, 3D perception, autonomous robotic systems.</p>
+            <p class="meta">GPA: 3.97</p>
+          </li>
+          <li>
+            <h3 class="item-title">University of Florida</h3>
+            <p class="meta">M.S. in Construction Management | Dec 2023 | Gainesville, FL</p>
+            <p class="meta">Full Scholarship &amp; Graduate Assistantship · <em>Academic Excellence Award — top graduate of the cohort</em></p>
+            <p class="meta">GPA: 4.00</p>
+          </li>
+          <li>
+            <h3 class="item-title">Southwest Jiaotong University</h3>
+            <p class="meta">B.E. in Environmental Engineering</p>
+            <p class="meta">B.E. in Economics (International Economics and Trade) | Jun 2013 | Chengdu, China</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="awards" class="panel reveal d2">
+        <h2 class="section-title">Awards &amp; Honors</h2>
+        <ul class="timeline">
+          <li><p class="meta">Rinker School Building Construction Scholarship <span style="float:right">Fall 2025</span></p></li>
+          <li><p class="meta">Impressive First — UF Coding Competition (Hackathon) <span style="float:right">Fall 2025</span></p></li>
+          <li><p class="meta">Ingle Family Scholarship <span style="float:right">Spring 2025</span></p></li>
+          <li><p class="meta">Rinker School Building Construction Scholarship <span style="float:right">Spring 2025</span></p></li>
+          <li><p class="meta">Phi Kappa Phi Honor Society <span style="float:right">Spring 2025</span></p></li>
+          <li><p class="meta">Jimmie Hinze Graduate Scholarship <span style="float:right">Fall 2024</span></p></li>
+          <li>
+            <p class="meta">CM Masters / Graduate Academic Excellence Award <span style="float:right">Fall 2023</span></p>
+            <p class="meta">1 recipient · University of Florida</p>
+          </li>
+          <li><p class="meta">Sigma Lambda Chi (ΣΛΧ) International Construction Honor Society <span style="float:right">Fall 2023</span></p></li>
+        </ul>
+      </section>
+
+      <section id="interests" class="panel reveal d3">
+        <h2 class="section-title">Research Interests</h2>
+        <ul class="interest-list">
+          <li><strong>Embodied AI &amp; VLA Models:</strong> Developing Vision-Language-Action architectures that bridge high-level semantic reasoning with low-level motor control for generalizable task planning.</li>
+          <li><strong>3D Scene Understanding for Action:</strong> Engineering robust 6DoF object pose estimation and tracking algorithms using RGB-D data and point cloud geometry to enable precise manipulation.</li>
+          <li><strong>Active Perception &amp; Object-level Reasoning:</strong> Leveraging geometric constraints and semantic priors to resolve state estimation under heavy occlusion and environmental uncertainty.</li>
+          <li><strong>Closed-loop Visual Servoing:</strong> Implementing adaptive control laws and real-time feedback loops for precision-critical assembly and construction-scale tasks.</li>
+          <li><strong>Robotic Assembly under Uncertainty:</strong> Addressing complex challenges in symmetry, tight tolerances, and imperfect components through perception-action coupling.</li>
+          <li><strong>Perception-Planning-Execution Co-design:</strong> Architecting integrated systems that ensure reliable deployment on large-scale industrial workstations.</li>
+          <li><strong>Digital Twins &amp; Sim-to-Real Pipelines:</strong> Building high-fidelity simulations to facilitate the scalable development and transfer of intelligent robotic policies.</li>
+        </ul>
+      </section>
+
+      <section id="publications" class="panel reveal d1">
+        <h2 class="section-title">Selected Publications</h2>
+        <div class="grid single-grid">
+          <article class="card">
+            <span class="chip">Journal</span>
+            <h3 class="item-title"><a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</a></h3>
+            <p class="meta">Authors: Chao Xie, Aladdin Alwisy</p>
+            <p><a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">DOI</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">Demo Video</a></p>
+          </article>
+          <article class="card">
+            <span class="chip">Conference | CRC 2024</span>
+            <h3 class="item-title"><a href="https://doi.org/10.1061/9780784485262.047" target="_blank" rel="noopener noreferrer">A Framework for Automated Quality Control of Wood-Framed Panels in Robotic-Based Manufacturing Using Computer Vision and Deep Learning</a></h3>
+            <p class="meta">ASCE Construction Research Congress (CRC), 2024</p>
+          </article>
+          <article class="card">
+            <span class="chip">Conference | ConIC 2026</span>
+            <h3 class="item-title">Quantitative Analysis of the Role of Robotics in Promoting Industrialized Construction for Resilient Post-Disaster Recovery: Exploratory Research</h3>
+            <p class="meta">ConIC, 2026</p>
+          </article>
+          <article class="card">
+            <span class="chip">Conference | I3CE 2026</span>
+            <h3 class="item-title">Digital Twin-Enabled Adaptive Control for Perception-Driven Robotic Assembly in Industrialized Construction</h3>
+            <p class="meta">I3CE, 2026</p>
+          </article>
+          <article class="card">
+            <span class="chip">Conference | CRC 2026</span>
+            <h3 class="item-title">Bridging the Gap: A Framework for Robotics Education in Industrialized Construction</h3>
+            <p class="meta">ASCE Construction Research Congress (CRC), 2026</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="talks" class="panel reveal d3">
+        <h2 class="section-title">Teaching</h2>
+        <ul class="timeline">
+          <li>
+            <h3 class="item-title">BCN4612C — Construction Estimating 2</h3>
+            <p class="meta">Instructor · Taught every semester</p>
+          </li>
+          <li>
+            <h3 class="item-title">BCN5905 — Advanced Construction Technology (Autodesk-Funded Course)</h3>
+            <p class="meta">Course Creator and Instructor</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact" class="panel reveal d1">
+        <h2 class="section-title">Contact</h2>
+        <p>I welcome collaboration and invited talk opportunities.</p>
+        <p class="meta">Email: <a href="mailto:xie.chao@ufl.edu">xie.chao@ufl.edu</a></p>
+        <p class="meta">LinkedIn: <a href="https://linkedin.com/in/chao-xie-7b35ab255/">linkedin.com/in/chao-xie-7b35ab255/</a></p>
+        <p class="meta">Location: Gainesville, FL 32603</p>
+      </section>
+    </main>
+
+    <footer>© 2026 Chao (Frank) Xie</footer>
+  </div>
+  <script>
+    (function () {
+      var elements = document.querySelectorAll(".reveal");
+      var progress = document.getElementById("scrollBar");
+
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries, ob) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              ob.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14 });
+
+        elements.forEach(function (el) { observer.observe(el); });
+      } else {
+        elements.forEach(function (el) { el.classList.add("in-view"); });
+      }
+
+      function updateScrollProgress() {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        var pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+        progress.style.width = pct + "%";
+      }
+
+      updateScrollProgress();
+      window.addEventListener("scroll", updateScrollProgress, { passive: true });
+      window.addEventListener("resize", updateScrollProgress);
+    })();
+  </script>
+</body>
+</html>
