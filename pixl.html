@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chao (Frank) Xie | Research Homepage</title>
+  <meta name="description" content="Chao (Frank) Xie research homepage: AI and robotics in construction, intelligent design, and 3D computer vision." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-cyan: #00ffff;
+      --neon-pink: #ff00ff;
+      --neon-green: #00ff00;
+      --neon-yellow: #ffff00;
+      --neon-orange: #ff6600;
+      --dark-bg: #0a0a0f;
+      --darker-bg: #050508;
+      --panel-bg: #1a1a2e;
+      --text: #e0e0e0;
+      --text-dim: #888899;
+      --border: #00ffff;
+    }
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+
+    html { 
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'VT323', monospace;
+      color: var(--text);
+      background: var(--dark-bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+
+    /* Animated Grid Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.03) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 2px, transparent 2px);
+      background-size: 50px 50px;
+      animation: grid-move 20s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes grid-move {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(50px); }
+    }
+
+    /* Scanlines */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+      z-index: 1000;
+      animation: scanline 8s linear infinite;
+    }
+
+    @keyframes scanline {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* Glitch effect */
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+    }
+
+    a {
+      color: var(--neon-cyan);
+      text-decoration: none;
+      text-shadow: 0 0 5px var(--neon-cyan);
+      transition: all 0.3s ease;
+    }
+
+    a:hover { 
+      color: var(--neon-pink);
+      text-shadow: 0 0 10px var(--neon-pink);
+    }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    /* Pixel Art Topbar */
+    .topbar {
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      margin: 20px 0 40px;
+      border: 4px solid var(--neon-cyan);
+      background: var(--panel-bg);
+      box-shadow: 
+        0 0 20px var(--neon-cyan),
+        inset 0 0 20px rgba(0, 255, 255, 0.1);
+      padding: 16px 20px;
+      position: relative;
+    }
+
+    .topbar::before,
+    .topbar::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--neon-cyan);
+      box-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .topbar::before {
+      top: -4px;
+      left: -4px;
+    }
+
+    .topbar::after {
+      bottom: -4px;
+      right: -4px;
+    }
+
+    .corner-br,
+    .corner-tr {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--neon-cyan);
+      box-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .corner-br {
+      top: -4px;
+      right: -4px;
+    }
+
+    .corner-tr {
+      bottom: -4px;
+      left: -4px;
+    }
+
+    .topbar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 12px;
+      color: var(--neon-cyan);
+      text-shadow: 
+        2px 2px 0px var(--neon-pink),
+        0 0 10px var(--neon-cyan);
+      animation: text-flicker 3s infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes text-flicker {
+      0%, 100% { opacity: 1; }
+      41%, 45% { opacity: 0.8; }
+      50% { opacity: 1; }
+      55%, 57% { opacity: 0.9; }
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .nav a {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 10px;
+      color: var(--neon-green);
+      padding: 8px 12px;
+      border: 2px solid var(--neon-green);
+      background: rgba(0, 255, 0, 0.05);
+      text-shadow: 0 0 5px var(--neon-green);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav a::before {
+      content: '>';
+      position: absolute;
+      left: -10px;
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(0, 255, 0, 0.15);
+      box-shadow: 0 0 15px var(--neon-green);
+      transform: translateX(4px);
+    }
+
+    .nav a:hover::before {
+      opacity: 1;
+      left: -15px;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 0;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .panel {
+      background: var(--panel-bg);
+      border: 4px solid var(--neon-pink);
+      padding: 30px;
+      box-shadow: 
+        0 0 30px rgba(255, 0, 255, 0.3),
+        inset 0 0 30px rgba(255, 0, 255, 0.05);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .panel::before,
+    .panel::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--neon-pink);
+      box-shadow: 0 0 10px var(--neon-pink);
+    }
+
+    .panel::before {
+      top: -6px;
+      left: -6px;
+    }
+
+    .panel::after {
+      bottom: -6px;
+      right: -6px;
+    }
+
+    .panel-corner-br,
+    .panel-corner-tr {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--neon-pink);
+      box-shadow: 0 0 10px var(--neon-pink);
+    }
+
+    .panel-corner-br {
+      top: -6px;
+      right: -6px;
+    }
+
+    .panel-corner-tr {
+      bottom: -6px;
+      left: -6px;
+    }
+
+    .panel:hover {
+      box-shadow: 
+        0 0 50px rgba(255, 0, 255, 0.5),
+        inset 0 0 30px rgba(255, 0, 255, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .kicker {
+      display: inline-block;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 10px;
+      color: var(--neon-yellow);
+      margin-bottom: 20px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 0, 0.1);
+      border: 2px solid var(--neon-yellow);
+      text-shadow: 0 0 10px var(--neon-yellow);
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 49%, 100% { opacity: 1; }
+      50%, 99% { opacity: 0.7; }
+    }
+
+    h1, h2, h3, h4 { 
+      font-family: 'Press Start 2P', cursive;
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-size: clamp(20px, 4vw, 32px);
+      margin-bottom: 20px;
+      color: var(--neon-cyan);
+      text-shadow: 
+        3px 3px 0px var(--neon-pink),
+        0 0 20px var(--neon-cyan);
+      animation: title-glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes title-glow {
+      from { text-shadow: 3px 3px 0px var(--neon-pink), 0 0 20px var(--neon-cyan); }
+      to { text-shadow: 3px 3px 0px var(--neon-pink), 0 0 30px var(--neon-cyan), 0 0 40px var(--neon-cyan); }
+    }
+
+    .nickname {
+      color: var(--neon-pink);
+      text-shadow: 0 0 15px var(--neon-pink);
+    }
+
+    .subhead {
+      font-family: 'VT323', monospace;
+      color: var(--text);
+      font-size: 22px;
+      line-height: 1.6;
+      margin: 0;
+      text-shadow: 0 0 5px rgba(224, 224, 224, 0.5);
+    }
+
+    .actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'Press Start 2P', cursive;
+      display: inline-block;
+      padding: 12px 20px;
+      font-size: 10px;
+      border: 3px solid var(--neon-green);
+      background: rgba(0, 255, 0, 0.1);
+      color: var(--neon-green);
+      text-shadow: 0 0 10px var(--neon-green);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 255, 0, 0.2);
+      transition: left 0.3s ease;
+    }
+
+    .btn:hover::before {
+      left: 0;
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 30px var(--neon-green);
+      transform: scale(1.05);
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    .btn.alt {
+      border-color: var(--neon-pink);
+      color: var(--neon-pink);
+      background: rgba(255, 0, 255, 0.1);
+      text-shadow: 0 0 10px var(--neon-pink);
+    }
+
+    .btn.alt::before {
+      background: rgba(255, 0, 255, 0.2);
+    }
+
+    .btn.alt:hover {
+      box-shadow: 0 0 30px var(--neon-pink);
+    }
+
+    .facts {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .facts li {
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      padding: 12px 16px;
+      background: rgba(0, 255, 255, 0.05);
+      border-left: 4px solid var(--neon-cyan);
+      color: var(--text);
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .facts li::before {
+      content: '█';
+      color: var(--neon-cyan);
+      margin-right: 10px;
+      animation: pulse-square 1.5s infinite;
+    }
+
+    @keyframes pulse-square {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .facts li:hover {
+      background: rgba(0, 255, 255, 0.15);
+      border-left-width: 8px;
+      padding-left: 20px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    main {
+      display: grid;
+      gap: 30px;
+    }
+
+    .section-title {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 20px;
+      margin-bottom: 25px;
+      color: var(--neon-green);
+      text-shadow: 
+        2px 2px 0px var(--neon-pink),
+        0 0 15px var(--neon-green);
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon-green), transparent);
+      box-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .timeline,
+    .interest-list {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline li,
+    .interest-list li,
+    .card {
+      border: 3px solid var(--neon-orange);
+      background: rgba(255, 102, 0, 0.05);
+      padding: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .timeline li::before,
+    .card::before {
+      content: '◢';
+      position: absolute;
+      left: -15px;
+      top: 20px;
+      color: var(--neon-orange);
+      font-size: 20px;
+      opacity: 0;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 10px var(--neon-orange);
+    }
+
+    .timeline li:hover::before,
+    .card:hover::before {
+      opacity: 1;
+      left: -10px;
+    }
+
+    .timeline li:hover,
+    .interest-list li:hover,
+    .card:hover {
+      background: rgba(255, 102, 0, 0.15);
+      box-shadow: 0 0 25px rgba(255, 102, 0, 0.4);
+      transform: translateX(8px);
+      border-color: var(--neon-yellow);
+    }
+
+    .interest-list li {
+      font-family: 'VT323', monospace;
+      font-size: 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      padding-left: 16px;
+    }
+
+    .interest-list li::before {
+      content: '▸';
+      flex-shrink: 0;
+      color: var(--neon-green);
+      font-size: 24px;
+      text-shadow: 0 0 10px var(--neon-green);
+      animation: arrow-pulse 2s infinite;
+    }
+
+    @keyframes arrow-pulse {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(5px); }
+    }
+
+    .item-title {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 14px;
+      margin-bottom: 12px;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px var(--neon-cyan);
+      line-height: 1.6;
+    }
+
+    .meta {
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .single-grid { 
+      grid-template-columns: 1fr; 
+    }
+
+    .chip {
+      font-family: 'Press Start 2P', cursive;
+      display: inline-block;
+      padding: 6px 12px;
+      margin-bottom: 15px;
+      font-size: 8px;
+      border: 2px solid var(--neon-yellow);
+      color: var(--neon-yellow);
+      background: rgba(255, 255, 0, 0.1);
+      text-shadow: 0 0 8px var(--neon-yellow);
+      box-shadow: 0 0 15px rgba(255, 255, 0, 0.3);
+    }
+
+    .video-wrapper {
+      margin-top: 20px;
+      border: 4px solid var(--neon-cyan);
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16 / 9;
+      box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.5),
+        inset 0 0 20px rgba(0, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .video-wrapper:hover {
+      box-shadow: 
+        0 0 50px rgba(0, 255, 255, 0.7),
+        inset 0 0 30px rgba(0, 255, 255, 0.2);
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      color: var(--text-dim);
+      border-top: 3px solid var(--neon-cyan);
+      box-shadow: 0 -5px 20px rgba(0, 255, 255, 0.2);
+    }
+
+    /* Pixel Effects */
+    .pixel-corner {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: var(--neon-cyan);
+      box-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .pixel-corner.tl { top: -8px; left: -8px; }
+    .pixel-corner.tr { top: -8px; right: -8px; }
+    .pixel-corner.bl { bottom: -8px; left: -8px; }
+    .pixel-corner.br { bottom: -8px; right: -8px; }
+
+    /* Loading/Processing Animation */
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--darker-bg);
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .loading-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink), var(--neon-green));
+      width: 0%;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: pixel-reveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .d1 { animation-delay: 0.1s; }
+    .d2 { animation-delay: 0.2s; }
+    .d3 { animation-delay: 0.3s; }
+    .d4 { animation-delay: 0.4s; }
+    .d5 { animation-delay: 0.5s; }
+
+    @keyframes pixel-reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Terminal Cursor */
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background: var(--neon-green);
+      animation: cursor-blink 1s infinite;
+      vertical-align: middle;
+      box-shadow: 0 0 10px var(--neon-green);
+    }
+
+    @keyframes cursor-blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero { 
+        grid-template-columns: 1fr; 
+      }
+    }
+
+    @media (max-width: 768px) {
+      .topbar-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav a {
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+
+      .section-title {
+        font-size: 16px;
+      }
+
+      .brand {
+        font-size: 10px;
+        text-align: center;
+      }
+
+      .panel {
+        padding: 20px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Bar -->
+  <div class="loading-bar">
+    <div class="loading-progress" id="loadingProgress"></div>
+  </div>
+
+  <div class="page">
+    <div class="topbar reveal">
+      <span class="corner-br"></span>
+      <span class="corner-tr"></span>
+      <div class="topbar-content">
+        <div class="brand">ROBOTICS_RESEARCH.EXE</div>
+        <nav class="nav">
+          <a href="#about">ABOUT</a>
+          <a href="#education">EDUCATION</a>
+          <a href="#interests">INTERESTS</a>
+          <a href="#publications">PUBLICATIONS</a>
+          <a href="#projects">PROJECTS</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+      </div>
+    </div>
+
+    <header class="hero">
+      <section class="panel reveal d1">
+        <span class="panel-corner-br"></span>
+        <span class="panel-corner-tr"></span>
+        <span class="kicker">◢ ACADEMIC_PROFILE ◣</span>
+        <h1>CHAO <span class="nickname">(FRANK)</span> XIE</h1>
+        <p class="subhead">
+          &gt; I research automation in construction with AI and robotics, intelligent design methods,
+          computer vision for 3D perception, and autonomous robotic systems for safer,
+          more efficient, and scalable building processes.<span class="cursor"></span>
+        </p>
+        <div class="actions">
+          <a class="btn" href="#publications">VIEW_PUBLICATIONS</a>
+          <a class="btn alt" href="#contact">CONTACT_ME</a>
+        </div>
+      </section>
+
+      <aside class="panel reveal d2">
+        <span class="panel-corner-br"></span>
+        <span class="panel-corner-tr"></span>
+        <span class="kicker">◢ CURRENT_STATUS ◣</span>
+        <ul class="facts">
+          <li>University of Florida, Ph.D. Student</li>
+          <li>Design, Construction and Planning (Expected Dec 2026)</li>
+          <li>Location: Gainesville, FL 32603</li>
+          <li>Focus: AI, robotics, and 3D vision for construction</li>
+        </ul>
+      </aside>
+    </header>
+
+    <main>
+      <section id="about" class="panel reveal d1">
+        <span class="panel-corner-br"></span>
+        <span class="panel-corner-tr"></span>
+        <h2 class="section-title">&gt; RESEARCH_OVERVIEW</h2>
+        <p class="subhead">
+          My research focuses on vision-driven closed-loop robotic systems for real-world manipulation and assembly, with an emphasis on construction-scale tasks using large industrial robots. I develop and validate 3D perception algorithms based on RGB-D sensing and point cloud geometry, and tightly integrate perception, state estimation, decision-making, and execution to enable robots to operate under geometric uncertainty, occlusion, and environmental variability. My work combines high-fidelity digital twins and real robotic workstations, ensuring that methods transfer reliably from simulation to physical deployment.
+        </p>
+      </section>
+
+      <section id="education" class="panel reveal d2">
+        <span class="panel-corner-br"></span>
+        <span class="panel-corner-tr"></span>
+        <h2 class="section-title">&gt; EDUCATION_SYSTEM</h2>
+        <ul class="timeline">
+          <li>
+            <h3 class="item-title">UNIVERSITY OF FLORIDA</h3>
+            <p class="meta">Ph.D. in Design, Construction and Planning | Expected Dec 2026 | Gainesville, FL</p>
+            <p class="meta">Research: automation in construction with AI and robotics; intelligent design methods; computer vision for 3D perception; autonomous robotic systems.</p>
+            <p class="meta">GPA: 3.97</p>
+          </li>
+          <li>
+            <h3 class="item-title">UNIVERSITY OF FLORIDA</h3>
+            <p class="meta">M.S. in Construction Management | Dec 2023 | Gainesville, FL</p>
+            <p class="meta">GPA: 4.00</p>
+          </li>
+          <li>
+            <h3 class="item-title">SOUTHWEST JIAOTONG UNIVERSITY</h3>
+            <p class="meta">B.E. in Environmental Engineering; B.E. in Economics (International Economics) | Jun 2013 | China</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="interests" class="panel reveal d3">
+        <span class="panel-corner-br"></span>
+        <span class="panel-corner-tr"></span>
+        <h2 class="section-title">&gt; RESEARCH_INTERESTS</h2>
+        <ul class="interest-list">
+          <li>Embodied perception for robotic manipulation in the physical world</li>
+          <li>3D scene understanding for action, using RGB-D data, geometry, and object-level reasoning</li>
+          <li>Closed-loop visual servoing and adaptive control for precision-critical tasks</li>
+          <li>Robotic assembly under uncertainty, addressing symmetry, tolerances, and imperfect components</li>
+          <li>Perception-planning-execution co-design for deployable robotic systems</li>
+          <li>Digital twins and sim-to-real pipelines for scalable robotic development</li>
+        </ul>
+      </section>
+
+      <section id="publications" class="panel reveal d4">
+        <span class="panel-corner-br"></span>
+        <span class="panel-corner-tr"></span>
+        <h2 class="section-title">&gt; PUBLICATIONS_DATABASE</h2>
+        <div class="grid single-grid">
+          <article class="card">
+            <span class="chip">JOURNAL</span>
+            <h3 class="item-title">Advancing Robotic Automation in Wood-Framed Construction Using Vision-Driven Adaptive Control</h3>
+            <p class="meta">Authors: Chao Xie, Aladdin Alwisy</p>
+            <p><a href="https://doi.org/10.1016/j.autcon.2026.106858" target="_blank" rel="noopener noreferrer">▸ DOI</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">▸ Demo Video</a></p>
+          </article>
+          <article class="card">
+            <span class="chip">CONFERENCE | CRC 2024</span>
+            <h3 class="item-title">Lumber Alignment Detection System for Robotic Nailing Using Computer Vision and Deep Learning</h3>
+            <p class="meta">ASCE Construction Research Congress (CRC), 2024</p>
+          </article>
+          <article class="card">
+            <span class="chip">CONFERENCE | ConIC 2026</span>
+            <h3 class="item-title">Quantitative Analysis of the Role of Robotics in Promoting Industrialized Construction for Resilient Post-Disaster Recovery: Exploratory Research</h3>
+            <p class="meta">ConIC, 2026</p>
+          </article>
+          <article class="card">
+            <span class="chip">CONFERENCE | I3CE 2026</span>
+            <h3 class="item-title">Digital Twin-Enabled Adaptive Control for Perception-Driven Robotic Assembly in Industrialized Construction</h3>
+            <p class="meta">I3CE, 2026</p>
+          </article>
+          <article class="card">
+            <span class="chip">CONFERENCE | CRC 2026</span>
+            <h3 class="item-title">Bridging the Gap: A Framework for Robotics Education in Industrialized Construction</h3>
+            <p class="meta">ASCE Construction Research Congress (CRC), 2026</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="panel reveal d5">
+        <span class="panel-corner-br"></span>
+        <span class="panel-corner-tr"></span>
+        <h2 class="section-title">&gt; PROJECT_FILES</h2>
+        <div class="grid single-grid">
+          <article class="card">
+            <span class="chip">DEMO PROJECT</span>
+            <h3 class="item-title">Vision-Driven Adaptive Control for Wood-Framed Construction</h3>
+            <p class="meta">Project demo for the paper on advancing robotic automation in wood-framed construction.</p>
+            <p><a href="https://www.youtube.com/watch?v=Lu1Ta6I1sc4" target="_blank" rel="noopener noreferrer">▸ Watch on YouTube</a></p>
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/Lu1Ta6I1sc4"
+                title="Project demo video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="talks" class="panel reveal d1">
+        <span class="panel-corner-br"></span>
+        <span class="panel-corner-tr"></span>
+        <h2 class="section-title">&gt; TEACHING_LOG</h2>
+        <ul class="timeline">
+          <li>
+            <h3 class="item-title">BCN4612C - CONSTRUCTION ESTIMATING 2</h3>
+            <p class="meta">Instructor | Taught every semester</p>
+          </li>
+          <li>
+            <h3 class="item-title">BCN5905: ADVANCED CONSTRUCTION TECHNOLOGY (AUTODESK-FUNDED COURSE)</h3>
+            <p class="meta">Course Creator and Instructor</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact" class="panel reveal d2">
+        <span class="panel-corner-br"></span>
+        <span class="panel-corner-tr"></span>
+        <h2 class="section-title">&gt; CONTACT_PROTOCOL</h2>
+        <p class="subhead" style="margin-bottom: 20px;">&gt; I welcome collaboration and invited talk opportunities.</p>
+        <div style="display: grid; gap: 12px;">
+          <p class="meta">▸ Email: <a href="mailto:xie.chao@ufl.edu">xie.chao@ufl.edu</a></p>
+          <p class="meta">▸ LinkedIn: <a href="https://linkedin.com/in/chao-xie-7b35ab255/" target="_blank" rel="noopener noreferrer">linkedin.com/in/chao-xie-7b35ab255/</a></p>
+          <p class="meta">▸ Location: Gainesville, FL 32603</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 CHAO (FRANK) XIE | RESEARCH HOMEPAGE</p>
+      <p style="margin-top: 10px; font-size: 18px; opacity: 0.7;">█ SYSTEM ONLINE █ READY FOR COLLABORATION █</p>
+    </footer>
+  </div>
+
+  <script>
+    // Loading Progress
+    window.addEventListener('load', () => {
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 10;
+        document.getElementById('loadingProgress').style.width = progress + '%';
+        if (progress >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            document.querySelector('.loading-bar').style.opacity = '0';
+            setTimeout(() => {
+              document.querySelector('.loading-bar').style.display = 'none';
+            }, 500);
+          }, 200);
+        }
+      }, 50);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Random glitch effect
+    setInterval(() => {
+      if (Math.random() > 0.95) {
+        document.body.style.animation = 'glitch 0.3s';
+        setTimeout(() => {
+          document.body.style.animation = '';
+        }, 300);
+      }
+    }, 3000);
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.timeline li, .interest-list li, .card').forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
